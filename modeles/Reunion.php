@@ -9,6 +9,7 @@ class Reunion{
 	private $plage;
 	private $salle;
 	private $statut;//A venir, passée, annulée etc.
+	private $compteRendu; //Nouveau, contient le compte-rendu de la réunion 
 	
 	/*********** Getters  **********/
 	public function getNumReunion() {
@@ -38,9 +39,34 @@ class Reunion{
 	public function getStatut() {
 	return $this->statut;
 	}
+	
+	public function getCompteRendu() {
+		return $this->compteRendu; 
+	}
 	/***********  Fin Getters  ***********/
 	
+
+	/*********** Début Setters ***********/
+	public function setCompteRendu($cr) {
+		$this->compteRendu=$cr;
+	}
+	/********** Fin Setter ***************/
 	
+	public function getReunionById($id){
+		global $bdd;
+		$reunion = $bdd->prepare('SELECT * FROM REUNION WHERE ID_REUNION = ?');
+		$reunion = $bdd->execute(array($id));
+		$tuple = $reunion -> fetchAll();
+			
+		return new Reunion(/*les paramètres*/);
+	}
+	
+	public function update() {
+		global $bdd;
+		$nouveau_membre = $bdd -> prepare('UPDATE REUNION SET  WHERE ID_REUNION= :id_reunion');
+		$nouveau_membre -> execute(array(/* les paramètres */
+									));
+	}
 	
 	
 	public static function ajouterParticipant(){}
