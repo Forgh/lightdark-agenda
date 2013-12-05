@@ -8,11 +8,15 @@ body {
 }
 
 
-header {
-	min-height:50px;
-	background-color: white; /*rgba(255,255,255,1) ;*/
-	box-shadow: 5px 5px 20px #aaa;
-	background-image: url("../imgs/headerbar.png");
+#header {
+	  position: fixed; /*reste en haut de l'ecran*/
+	  top: 0;
+
+	  width: 100%;
+	  height:110px;
+	  z-index:1;/*pour passer le header au premier plan lors du scroll*/
+  
+	  background: #82BADF;
 }
 
 @font-face {
@@ -37,15 +41,16 @@ h2{
 }
 
 
-header #connexion{
-	float: right;
-	margin-top: 5px;
+#connexion{
+	position:fixed;
+	top:5px;
+	right:5px;
 }
 
-header #logo {
-	float:left;
-	margin-top: 5px;
-	margin-left:5px;
+#logo {
+	position:fixed;
+	top:5px;
+	left:10px;
 }
 
 
@@ -53,7 +58,6 @@ footer {
 	position:fixed;
 	/*margin-top: 48px;*/
 	bottom:0;
-	right:0;
 	min-height : 25px;
 	width:100%;
 	/*background: #FAFAFA url('./bg02.png');*/	
@@ -80,17 +84,14 @@ footer #copyright{
 }
 
 #bodycentered{
-	/*display: none;*/
-	margin-left: 20%;
-	margin-top: 30px;
+	position:relative;
+	top:150px;/*Header + barre de navigation + 10px de marge*/
+	left:20%;
+
 	width: 60%;
 	min-height:100%;
 	padding: 10px;
-	/*border-left-style: solid;
-	border-right-style: solid;*/
-	/*border-style: solid;
-	border-color: rgb(200,200,200);
-	border-width: 1px;*/
+
 
 	border-bottom-style: solid;
 	border-bottom-color: grey;
@@ -98,7 +99,9 @@ footer #copyright{
 	background: white;
 	box-shadow: 5px 15px 20px #aaa;
 	text-align: justify;
-	overflow: hidden;
+	
+	
+
 }
 
 #validateEmail, #validateUsername {
@@ -167,6 +170,21 @@ div.msgbox .bouton{
 
 #button_prez {
 	display: inline-block;
+}
+
+fieldset{/*Effets sur les blocs*/
+
+	background-color : #E4E4E4;
+	margin-top: 10px;
+	margin-bottom :10px;
+	border-radius: 10px;;
+}
+
+legend{ /*Effets sur les titres des blocs*/
+	/*font-family : Tahoma, Geneva, sans-serif;*/
+	background-color : #4C4C4C;
+	border: thin black solid;
+	color : white;
 }
 
 ul#listelikes, ul#listedislikes{
@@ -295,7 +313,7 @@ div.msgbox_btn_box{
 	/*background: red;*/
 }
 
-div.bouton{
+/*div.bouton{
 	
 	margin-right : 10px;
 	padding: 8px;
@@ -316,12 +334,12 @@ div.bouton{
 	transition: background-color .25s ease-in-out;
 		
 }
-
-div.bouton a{
+*/
+div.bouton a, div.boutonbegin a, div.boutonend a{
 	text-decoration:none;
-	color:white;
+	color:black;
 }
-
+/*
 div.bouton:hover
 {
 	background: #e53359;
@@ -344,7 +362,6 @@ div.bouton.petit{
 
 div.bouton.header{
 	background-color : rgb(100,200,100);
-	/*background: #6495ED;*/
 	color: #fff !important;
 }
 
@@ -359,7 +376,6 @@ div.bouton.header:active{
 
 div.bouton.header_out{
 	background-color : rgb(200,100,100);
-	/*background: #6495ED;*/
 	color: #fff !important;
 }
 
@@ -369,7 +385,59 @@ div.bouton.header_out:hover{
 
 div.bouton.header_out:active{
 	background: rgb(200, 100,100);
+}*/
+
+#barre_navigation{
+	font-family: caption;
+	position: fixed;
+	left:33%;
+	top:110px;/*en bas du header*/
+
+	z-index:1;
+	
 }
+
+
+div.bouton, div.boutonbegin, div.boutonend {
+	-moz-box-shadow:inset 0px 1px 0px 0px #dcecfb;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #dcecfb;
+	box-shadow:inset 0px 1px 0px 0px #dcecfb;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bddbfa), color-stop(1, #80b5ea) );
+	background:-moz-linear-gradient( center top, #bddbfa 5%, #80b5ea 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
+	background-color:#bddbfa;
+	
+	text-indent:0;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	color:#ffffff;
+	font-family:/*Comic Sans MS*/ Tahoma, Geneva, sans-serif;
+	font-size:15px;
+	font-weight:bold;
+	font-style:italic;
+	height:30px;
+	line-height:30px;
+	width:auto/*100px*/;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #528ecc;
+	white-space: nowrap;
+	padding: 0 10px 0 10px;
+}
+div.bouton:hover, div.boutonbegin:hover, div.boutonend:hover {
+background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #80b5ea), color-stop(1, #bddbfa) );
+	background:-moz-linear-gradient( center top, #80b5ea 5%, #bddbfa 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea', endColorstr='#bddbfa');
+	background-color:#80b5ea;
+}
+
+div.boutonbegin{/*premier bouton de la serie*/
+	border-radius: 0 0 0 5px;
+}
+div.boutonend{/*dernier bouton de la ligne*/
+	border-radius: 0 0 5px 0;
+}
+
 
 /* FORMULAIRE UNIQUEMENT */
 
