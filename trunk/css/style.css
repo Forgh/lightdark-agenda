@@ -1,0 +1,551 @@
+body {
+	margin: 0;
+	padding: 0;
+	padding-bottom:50px;
+	font-family: 'Source Sans Pro';
+	font-weight: 300;
+	background: #f7f7f7 url('../imgs/bg.png');
+}
+
+
+header {
+	min-height:50px;
+	background-color: white; /*rgba(255,255,255,1) ;*/
+	box-shadow: 5px 5px 20px #aaa;
+	background-image: url("../imgs/headerbar.png");
+}
+
+@font-face {
+	font-family : 'tallsfilms';
+	src: url('design/tall.ttf');
+}
+
+h2{
+	font-family:'tallsfilms';
+	font-size:1.9em;
+}
+
+#search {
+	float:left;
+	margin-top: 10px;
+	margin-left: 75px;
+	width:30%;
+}
+
+#champ-texte{
+	width:60%;
+}
+
+
+header #connexion{
+	float: right;
+	margin-top: 5px;
+}
+
+header #logo {
+	float:left;
+	margin-top: 5px;
+	margin-left:5px;
+}
+
+
+footer {
+	position:fixed;
+	/*margin-top: 48px;*/
+	bottom:0;
+	right:0;
+	min-height : 25px;
+	width:100%;
+	/*background: #FAFAFA url('./bg02.png');*/	
+	background-color: rgb(255,255,255) ;
+	border-top-style: solid;
+	border-top-color: #6E6E6E;
+	border-width: 1px;
+}
+footer #footer_txt a{
+	float: right;
+	margin-right:12px;
+	color: gray;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+
+footer #footer_txt a:hover{
+	color:rgb(100,200,100);
+}
+
+footer #copyright{
+	
+}
+
+#bodycentered{
+	/*display: none;*/
+	margin-left: 20%;
+	margin-top: 30px;
+	width: 60%;
+	min-height:100%;
+	padding: 10px;
+	/*border-left-style: solid;
+	border-right-style: solid;*/
+	/*border-style: solid;
+	border-color: rgb(200,200,200);
+	border-width: 1px;*/
+
+	border-bottom-style: solid;
+	border-bottom-color: grey;
+	border-bottom-width: 2px;
+	background: white;
+	box-shadow: 5px 15px 20px #aaa;
+	text-align: justify;
+	overflow: hidden;
+}
+
+#validateEmail, #validateUsername {
+	float : left;
+	margin-left : 10px;
+	width:150px;
+	text-align:left;
+}
+
+#otherMarks{
+	display:none;
+}
+
+div.bodycentered_line{
+	clear: both;
+	display: block;
+	width: 100%;
+	
+	margin: 0px;
+	/*padding-top: 24px;*/
+	margin-top: 24px;
+	margin-bottom:24px;
+	/*border-left-style: solid;
+	border-right-style: solid;*/
+	border-bottom-style: solid;
+	border-bottom-color: grey;
+	border-width: 1px;
+}
+
+div.bodycentered_line.invisible{
+	display: none;
+}
+
+h2 {
+	/*font-style: italic;*/
+	display: block;
+	font-size: 18px;
+	border-bottom-style: solid;
+	border-bottom-color: grey;
+	border-width: 1px;
+}
+
+h2.invisible {
+	display: none;
+}
+
+/* BOITE DE DIALOGUE ET ORGANISATION */
+div.msgbox{
+	display: block;
+	margin-left: 0%;
+	margin-top: 10px;
+	width: 100%;
+	text-align: center;
+}
+
+div.msgbox.invisible{
+	display: none;
+}
+
+div.msgbox .bouton{
+	margin-left: 24px;
+	margin-right: 24px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+} 
+
+#button_prez {
+	display: inline-block;
+}
+
+ul#listelikes, ul#listedislikes{
+  list-style:none;
+  width: 42%;
+    padding:20px;
+  padding-bottom:0;
+
+  position: relative;
+  min-height: 351px;
+}
+
+ul#listelikes{
+	float:left;
+	border-right-style: solid;
+	border-right-width: 2px;
+	border-right-color: green;
+	border-top-style: solid;
+	border-top-width: 2px;
+	border-top-color: green;
+}
+
+ul#listedislikes{
+	float:right;
+	border-left-style: solid;
+	border-left-width: 2px;
+	border-left-color: red;
+	border-top-style: solid;
+	border-top-width: 2px;
+	border-top-color: red;		
+}
+
+/* style des �l�ments de la liste */
+ul#listelikes li, ul#listedislikes li{
+  cursor:move;
+  height:75px;
+  width:150px;
+    margin-right:20px;
+    margin-bottom:20px;
+  background:#fff;
+  color:#212326;
+  -moz-box-shadow:2px 2px 5px #ccc;
+  display:list-item;
+  overflow:hidden;
+}
+
+
+#listelikes li {
+	float : right;
+
+}
+
+#listedislikes li {
+	float : left;
+}
+
+#zonelistes {
+	max-width:100%;
+	background-image:url('design/panel.png');
+}
+
+
+
+/* moitie gauche */
+div.moitieGauche{
+	display: inline-block;
+	padding-right: 5px;
+	margin-left: 5%;
+	/*border-right-style: solid;
+	border-right-color: grey;
+	border-width: 1px;*/
+}
+
+.moitieGauche label{
+	clear: left;
+	float:left;
+}
+
+.moitieGauche select{
+	clear: left;
+	float:left;
+}
+
+
+.moitieGauche input{
+	clear: left;
+	float:left;
+}
+
+.moitieGauche .bouton{
+	clear: left;
+	float:left;
+}
+
+.connexionBoxGauche{
+	display: inline-block;
+	padding-right: 5px;
+	margin-left: 5%;
+}
+
+.connexionBoxGauche label, .connexionBoxGauche select, .connexionBoxGauche input{
+	clear: left;
+	float:left;
+}
+
+.connexionBoxBtnGauche{
+	margin-top: 20px;
+	clear: left;
+	float:left;
+}
+
+
+.moitieDroite{
+	width: 40%;
+	float:right;
+}
+
+
+
+
+
+/* BOUTONS */
+div.msgbox_btn_box{
+	width: 100%;
+	display: inline;
+	/*background: red;*/
+}
+
+div.bouton{
+	
+	margin-right : 10px;
+	padding: 8px;
+	height: 20px;
+	display: inline-block;
+	text-decoration: none;
+	cursor: pointer;
+	border: 0;
+	border-radius: 5px;
+	background: #00C800;
+	color: #fff !important;
+	font-weight: 550;
+	outline: 0;
+	-moz-transition: background-color .25s ease-in-out;
+	-webkit-transition: background-color .25s ease-in-out;
+	-o-transition: background-color .25s ease-in-out;
+	-ms-transition: background-color .25s ease-in-out;
+	transition: background-color .25s ease-in-out;
+		
+}
+
+div.bouton a{
+	text-decoration:none;
+	color:white;
+}
+
+div.bouton:hover
+{
+	background: #e53359;
+}
+
+div.bouton:active
+{
+	background: #00C800;
+}
+
+div.bouton.petit{
+	margin-top: 0px;
+	margin-bottom: 2px;
+	margin-right: 5px;
+	padding: 2px;
+	height: 16px;
+	font-size: 10px;
+}
+
+
+div.bouton.header{
+	background-color : rgb(100,200,100);
+	/*background: #6495ED;*/
+	color: #fff !important;
+}
+
+div.bouton.header:hover{
+	background: rgb(15,200,15);
+}
+
+div.bouton.header:active{
+	background: rgb(100,200,100);
+}
+
+
+div.bouton.header_out{
+	background-color : rgb(200,100,100);
+	/*background: #6495ED;*/
+	color: #fff !important;
+}
+
+div.bouton.header_out:hover{
+	background:  rgb(200,15,15);
+}
+
+div.bouton.header_out:active{
+	background: rgb(200, 100,100);
+}
+
+/* FORMULAIRE UNIQUEMENT */
+
+#infoUser{
+	display:none;
+}
+#infoEntreprise{
+	display:none;
+}
+.obligatoire{
+	color: red;
+}
+
+div.msgObligatoire{
+	float:left;
+	clear: left;
+	font-style: italic;
+	font-size: 9px;
+	color: red;
+}
+
+/* CONNEXION UNIQUEMENT */
+#login{
+	
+}
+#loginNoActif{
+	display:none;
+}
+
+
+img.photoObjet {
+	float: left;
+	border-radius: 5px;
+	/*box-shadow: 1px 1px 12px #555;*/
+}
+
+/* Presentation objet*/
+div.likesNumber{
+	float:left;
+}
+
+.likesNumber p{
+	font-weight:bold;
+	margin: 0px;
+	margin-top: 12px;
+	margin-left: 5px;
+	color: rgba(0,200,0,1);
+}
+.likesNumber img{
+	float:left;
+}
+
+div.dislikesNumber{
+	float:left;
+	margin-left: 32px;
+}
+
+.dislikesNumber p{
+	font-weight:bold;
+	margin: 0px;
+	margin-top: 12px;
+	margin-left: 5px;
+	color: rgba(200,0,0,1);
+}
+
+form.formulaireAjoutObjet{
+	clear: left;	
+	float:left;
+	display: inline-block;	
+}
+
+
+/*
+.formbox{
+	display: inline-block;
+	padding-right: 5px;
+	margin-left: 5%;
+	background:red;
+}
+*/
+
+
+
+#ajoutobjet{
+	float:left;
+	width:50%;
+}
+#ajoutobjet input,#ajoutobjet select, #ajoutobjet textarea{
+margin-top:-15px;
+}
+
+#ajoutobjet input,#ajoutobjet select{
+	width:40%;
+}
+
+#ajoutobjet textarea{
+	width:80%;
+	height:150px;
+}
+.form_element{
+	clear: left;
+	float: left;
+	text-align:left;
+	width: 40%;
+		display: inline-block;
+
+	/*margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;*/
+}
+
+
+	
+div.liste_objet_pair{
+	clear: both;
+	background-color:rgb(50,220,220);
+	width:100%;
+}
+
+img.liste_objet_picture{
+	float:left;
+	width:64px;
+	height:64px;
+	border-radius: 5px;
+}
+
+div.liste_objet_info{
+	float:left;
+	margin-top:-20px;
+	margin-left:5px;
+}
+
+div.liste_objet_vote{
+	margin-top:10px;
+	float:right;
+}
+
+div.liste_objet_vote p,div.liste_objet_vote img{
+	float:left;
+}
+
+div.liste_objet_vote p.likesNumber{
+	font-weight:bold;
+	margin: 0px;
+	margin-top: 12px;
+	margin-left: 5px;
+	color: rgba(0,200,0,1);
+}
+
+div.liste_objet_vote p.dislikesNumber{
+	font-weight:bold;
+	margin: 0px;
+	margin-top: 12px;
+	margin-left: 5px;
+	color: rgba(200,0,0,1);
+}
+
+span.presentationObjetLbl {/*le texte invariant de la page présentation*/
+	font-weight:bold;
+}
+p.space{	
+	min-width: 24px;
+}
+.accueilGauche{
+	float:left;
+	width:30%;
+}
+.accueilDroite{
+	float:right;
+	width:70%;
+	margin-top:50px;
+}
+/********************************************* MODIF. 14/11/2013 21:41
+
+/********************************************* MODIF. 28/11/2013 20:25*/
+div#modifs{
+	display: none;
+}
