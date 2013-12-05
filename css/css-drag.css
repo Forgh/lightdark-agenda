@@ -1,0 +1,83 @@
+/* style global de la liste non ordonn� */
+ul#reserve_like{
+  list-style-type:none;
+  text-align: center;
+  width: auto;
+  margin-right:auto;
+  margin-left:auto;
+  padding-top:40px;
+  padding-bottom:0;
+  border-radius:3px;
+  position: relative;
+  height: 115px;
+  box-shadow:0 0 30px rgba(0,0,0,0.3) inset,0 -3px 2px rgba(0,0,0,0);  
+}
+
+ul#zonelike, ul#zonedislike{
+  list-style:none;
+  width: 40%;
+    padding:20px;
+  padding-bottom:0;
+  border-radius:3px;
+  border-style:solid;
+  border-width:1px;
+  position: relative;
+  min-height: 351px;
+}
+
+ul#zonelike{
+	border-color:green;
+	float:left;
+  box-shadow:0 0 30px rgba(0,255,0,0.5) inset,0 -3px 2px rgba(0,255,0,0);  
+
+}
+
+ul#zonedislike{
+	border-color:red;
+	float:right;
+  box-shadow:0 0 30px rgba(255,0,0,0.5) inset,0 -3px 2px rgba(255,0,0,0);  
+}
+
+/* style des �l�ments de la liste */
+ul#zonelike li, ul#zonedislike li, ul#reserve_like li{
+  cursor:move;
+  height:75px;
+  width:150px;
+    margin-right:20px;
+    margin-bottom:20px;
+  background:#fff;
+  color:#212326;
+  -moz-box-shadow:2px 2px 5px #ccc;
+}
+
+#reserve_like li {
+	display:inline;
+}
+
+#zonelike li {
+	float : right;
+}
+
+#zonedislike li {
+	float : left;
+}
+#zonecommentaire{
+		float:left;
+		width:100%;
+}
+
+#zoneenregistre {
+	max-width:100%;
+}
+
+#commentaire {
+	width:100%;
+	min-height:100px;
+	margin-right : auto;
+	margin-left: auto;
+}
+
+.center {
+	position:relative;
+	margin-left:50%;
+}
