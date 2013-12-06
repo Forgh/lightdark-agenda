@@ -55,7 +55,7 @@ class Utilisateur{
 		echo '<ul class="liste_membres">';
 		
 		foreach($liste as $value){
-			echo'<li class="membre"><input type="hidden" name="'.$value['ID_MEMBRE'].'">'.$value['NOM_MEMBRE'].'</li>';
+			echo'<li class="membre"><input type="checkbox" name="'.$value['ID_MEMBRE'].'">'.$value['NOM_MEMBRE'].'</li>';
 		}
 		
 		echo '</ul>';
