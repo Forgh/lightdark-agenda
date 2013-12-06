@@ -1,9 +1,15 @@
 <?php
 	require('modeles/Equipe.php');
 	require('modeles/Service.php');
+	require('modeles/Utilisateur.php');
 	
 	$services = Service::getAllServices();
-?>	
+	$liste_all_membres= Utilisateurs::getListeMembres();
+	
+	Utilisateurs::listerMembre($liste_all_membres);
+	
+?>
+
 	<ul id="liste_services">
 		<?php 
 			foreach($services as $services_values){
@@ -17,7 +23,7 @@
 									 			<?php
 									 				$membres = Equipes::getMembresEquipe($equipes_values['ID_EQUIPE']);
 													foreach ($membres as $membres_values) { ?>
-														<li><input type="checkbox" class="membre" name="<?php echo $membres_values['ID_PARTICIPANT']; ?>"><?php echo $membres_values['NOM']; echo $membres_values['PRENOM']; ?></li>
+														<li><input type="checkbox" class="membre" name="<?php echo $membres_values['ID_PARTICIPANT']; ?>"><?php echo $membres_values['NOM'];?> <?php echo $membres_values['PRENOM']; ?></li>
 												<?php	}
 									 			?>
 									 		</ul>	
