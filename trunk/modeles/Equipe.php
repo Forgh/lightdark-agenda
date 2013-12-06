@@ -45,6 +45,14 @@ class Equipe{
 		
 		return $tuples;
 	}
+	
+	public function listerEquipes($liste){
+		echo '<ul class="liste_equipes">';
+		foreach($liste as $value){
+			echo '<li class="equipe"><input type="hidden" name="'.$value['ID_EQUIPE'].'">'.$value['NOM_EQUIPE'].'</li>';
+		}
+		echo'</ul>';
+	}
 }//end class
 
 ?>

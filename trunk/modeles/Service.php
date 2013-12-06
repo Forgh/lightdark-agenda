@@ -32,6 +32,13 @@ class Service{
 		return $tuples;
 	}
 	
+	public function listerServices($liste){
+		echo '<ul class="liste_services">';
+		foreach($liste as $value){
+			echo '<li class="service"><input type="hidden" name="'.$value['ID_SERVICE'].'">'.$value['NOM_SERVICE'].'</li>';
+		}
+		echo'</ul>';
+	}
 		
 }//end class
 

@@ -51,14 +51,22 @@ class Utilisateur{
 		return $tuple;
 	}
 	
+	public function listerMembre($liste){
+		echo '<ul class="liste_membres">';
+		
+		foreach($liste as $value){
+			echo'<li class="membre"><input type="hidden" name="'.$value['ID_MEMBRE'].'">'.$value['NOM_MEMBRE'].'</li>';
+		}
+		
+		echo '</ul>';
+	}
+
 	public function getListeMembres(){/*Retourne la liste des Id des membres de la table*/
 		global $bdd;
 		$membres = $bdd -> query('SELECT NOM FROM PARTICIPANT');
 		$tuple = $membres -> fetchAll();/*tableau*/
-		
 		return $tuple;
-	}
-	
+	}	
 	
 
 
