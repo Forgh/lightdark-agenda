@@ -41,6 +41,21 @@ class Utilisateur{
 	return $this->agenda;
 	}
 	/***********  Fin Getters **********/
+	
+	public function getAllUsers(){/*renvoie tous les utilisateurs de la table*/
+			
+		global $bdd;
+		$membres = $bdd -> query('SELECT * FROM PARTICIPANT');
+		$tuple = $membres -> fetchAll();/*tableau*/
+		
+		return $tuple;
+	}
+	
+	public function getListeMembres(){
+		
+	}
+	
+	
 
 
 }//end class

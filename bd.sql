@@ -12,7 +12,59 @@ CREATE TABLE PARTICIPANT
    CONSTRAINT pk_participant PRIMARY KEY (ID_PARTICIPANT) 
  ) engine=innodb CHARACTER SET UTF8 COLLATE utf8_unicode_ci;
 
+ 
+ 
+# -----------------------------------------------------------------------------
+#       TABLE : EQUIPE
+# -----------------------------------------------------------------------------
 
+ CREATE TABLE EQUIPE
+ (
+ ID_EQUIPE INT(4) UNSIGNED NOT NULL AUTO_INCREMENT,
+ NOM CHAR(32) NOT NULL,
+ CONSTRAINT pk_equipe PRIMARY KEY (ID_EQUIPE)
+ ) engine=innodb CHARACTER SET UTF8 COLLATE utf8_unicode_ci;
+ 
+
+# -----------------------------------------------------------------------------
+#       TABLE : APPARTENIR_A
+# -----------------------------------------------------------------------------
+
+ CREATE TABLE APPARTENIR_A
+ (
+ ID_PARTICIPANT INT(4) UNSIGNED NOT NULL;
+ ID_EQUIPE INT(4) UNSIGNED NOT NULL,
+ CONSTRAINT pk_appartenir_aq PRIMARY KEY (ID_PARTICIPANT, ID_EQUIPE),
+ CONSTRAINT fk_appartenir_a_participant FOREIGN KEY (ID_PARTICIPANT) REFERENCES PARTICIPANT(ID_PARTICIPANT),
+ CONSTRAINT fk_appartenir_a_equipe FOREIGN KEY (ID_EQUIPE) REFERENCES EQUIPE(ID_EQUIPE)
+ ) engine=innodb CHARACTER SET UTF8 COLLATE utf8_unicode_ci;
+
+ 
+# -----------------------------------------------------------------------------
+#       TABLE : SERVICE
+# -----------------------------------------------------------------------------
+ 
+ CREATE TABLE SERVICE
+ (
+ ID_SERVICE INT(4) UNSIGNED NOT NULL AUTO_INCREMENT,
+ NOM CHAR(32) NOT NULL,
+ CONSTRAINT pk_service PRIMARY KEY (ID_SERVICE)
+ ) engine=innodb CHARACTER SET UTF8 COLLATE utf8_unicode_ci;
+ 
+# -----------------------------------------------------------------------------
+#       TABLE : FAIRE_PARTIE_DE
+# -----------------------------------------------------------------------------
+ 
+ CREATE TABLE FAIRE_PARTIE_DE
+ (
+ ID_SERVICE INT(4) UNSIGNED NOT NULL,
+ ID_EQUIPE INT(4) UNSIGNED NOT NULL,
+ CONSTRAINT pk_faire_partie_de PRIMARY KEY (ID_SERVICE, ID_EQUIPE),
+ CONSTRAINT fk_faire_partie_de_service FOREIGN KEY (ID_SERVICE) REFERENCES SERVICE(ID_SERVICE),
+ CONSTRAINT fk_faire_partie_de_equipe FOREIGN KEY (ID_EQUIPE) REFERENCES EQUIPE(ID_EQUIPE)
+ 
+ ) engine=innodb CHARACTER SET UTF8 COLLATE utf8_unicode_ci;
+ 
 # -----------------------------------------------------------------------------
 #       TABLE : MOMENT
 # -----------------------------------------------------------------------------
@@ -67,7 +119,7 @@ CREATE TABLE PARTICIPE
 (
    NOM_SALLE CHAR(32) NOT NULL ,
    ID_REUNION int(6) UNSIGNED NOT NULL  ,
-   ID_PARTICIPANT INT(4) UNSIGNED NOT NULL  ,
+   ID_PARTICIPANT INT(4) UNSIGNED NOT NULL ,
    INDEX (NOM_SALLE),
    INDEX (ID_REUNION),
    INDEX (ID_PARTICIPANT),
