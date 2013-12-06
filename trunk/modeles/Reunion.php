@@ -105,9 +105,25 @@ class Reunion{
 		$ajout = $bdd -> execute(array($numReunion, $idParticipant));
 		}
 	
-	public static function retirerParticipant(){}
-	public static function estCreateur(){}
+	public static function retirerParticipant($numReunion, $idParticipant){
+		global $bdd;
+		$suppression = $bdd -> prepare('DELETE FROM PARTICIPE WHERE ID_PARTICIPANT = ? AND ID_REUNION = ?');
+		$suppression = $bdd -> execute(array($numReunion, $idParticipant));
+		}
+	
+	public static function estChef($numReunion, $idParticipant){/*Retourne vrai si l'id donné est celui du propriétaire de la réunion, faux sinon*/
+	global $bdd;
+	$chef = $bdd -> prepare('SELECT ID_CHEF_REUNION FROM REUNION WHERE ID_CHEF_REUNION = ?');
+	$chef = $bdd -> execute(array($numReunion));
+	$tuple = $chef -> fetchAll();
+	return ($idParticipant == $tuple['ID_CHEF_REUNION']);
+		}
+		
+		
 	public static function afficher(){}//retourne un moyen d'afficher la réunion, ses infos, son rapport si terminée
+	/*Redondant avec un controleur qui serait chargé de faire ca ?*/
+	
+	
 	public static function notifierCreation(){}//"Eh, on a programmé une réunion et t'es invité"
 	public static function notifierAnnulation(){}
 	
