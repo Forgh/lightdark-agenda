@@ -20,11 +20,11 @@ class Utilisateur{
 	
 	
 	/***********  Getters  ***********/
-	public function getNom() { //attention à la MAJ
+	public function getNom() { 
 	return $this->nom;
 	}
 	
-	public function getId() { //attention à la MAJ
+	public function getId() {
 	return $this->id;
 	}
 	
@@ -56,17 +56,17 @@ class Utilisateur{
 	
 	public function listerMembre($liste){
 		echo '<ul class="liste_membres">';
-		
 		foreach($liste as $value){
-			echo'<li class="membre"><input type="checkbox" name="'.$value['ID_MEMBRE'].'">'.$value['NOM_MEMBRE'].'</li>';
+			echo'<li class="membre"><input type="checkbox" name="'.$value['ID_PARTICIPANT'].'"> '.$value['PRENOM'].' '.$value['NOM'].'</li>';
 		}
-		
 		echo '</ul>';
 	}
+	
+	
 
-	public function getListeMembres(){/*Retourne la liste des Id des membres de la table*/
+	public function getListeMembres(){/*Retourne la liste des Id, prénoms et noms des membres de la table*/
 		global $bdd;
-		$membres = $bdd -> query('SELECT NOM FROM PARTICIPANT');
+		$membres = $bdd -> query('SELECT ID_PARTICIPANT, NOM, PRENOM FROM PARTICIPANT');
 		$tuple = $membres -> fetchAll();/*tableau*/
 		return $tuple;
 	}	
