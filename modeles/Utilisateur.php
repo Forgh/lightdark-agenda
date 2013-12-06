@@ -1,5 +1,7 @@
 <?php 
 //connexion à la BD
+include('include/connect.php');
+
 class Utilisateur{
 	private $id;
 	private $nom;
@@ -8,14 +10,14 @@ class Utilisateur{
 	private $mail;//unique
 	private $agenda;
 	
-	public static function estDispo();/*Redondant avec celui de Agenda ?*/
-	public static function login();
-	public static function getListeReunions();//liste des réunions prévues pour lui
-	public static function creerReunion();
-	public static function AnnulerReunion();
-	public static function signalerAbsence();
+	//public abstract function estDispo();/*Redondant avec celui de Agenda ?*/
+	//public abstract function login();
+	//public abstract function getListeReunions();//liste des réunions prévues pour lui
+	//public abstract function creerReunion();
+	//public abstract function AnnulerReunion();
+	//public abstract function signalerAbsence();
 	
-	public static function ajouterRapport();//rapport/compte-rendu de réunion, géré par un BLOB-like ou ajouter classe "Rapport"
+	//public abstract function ajouterRapport();//rapport/compte-rendu de réunion, géré par un BLOB-like ou ajouter classe "Rapport"
 	/*Redondant avec controleur séparé ?*/
 	
 	
