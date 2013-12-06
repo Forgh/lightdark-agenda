@@ -14,7 +14,10 @@ class Utilisateur{
 	public static function creerReunion();
 	public static function AnnulerReunion();
 	public static function signalerAbsence();
+	
 	public static function ajouterRapport();//rapport/compte-rendu de réunion, géré par un BLOB-like ou ajouter classe "Rapport"
+	/*Redondant avec controleur séparé ?*/
+	
 	
 	/***********  Getters  ***********/
 	public function getNom() { //attention à la MAJ
