@@ -78,7 +78,7 @@ class Utilisateur{
 		
 	}
 	
-	public function getUserbyId($id){
+	public function getUserById($id){
 		global $bdd;
 		$u = $bdd -> prepare('SELECT * FROM PARTICIPANT WHERE ID = ?');
 		$u = $bdd -> execute(array($id));

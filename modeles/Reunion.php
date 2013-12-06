@@ -140,6 +140,28 @@ class Reunion{
 				
 	}
 	
+	function envoyer_mail($destinataire, $sujet, $msg){
+	$headers = "From: " . $expediteur . "\r\n" ."Reply-To: " . $expediteur . "\r\n";
+	mail($destinataire,$sujet,$msg,$headers);
+}
+
+
+	function mail_nouvelle_reunion($num,$id){
+	$p = Utilisateur::getUserById($id);
+	if ($p != null){
+		$msg = 'Bonjour, ' . $p->getPrenom() .', la reunion '. $num .' a été créée.';	
+		envoyer_mail($p->getMail(), "AGENDA: ajout réunion", $msg );
+	}
+}
+
+function mail_annulation_reunion($num, $id){
+	$p = Utilisateur::getUserById($id);
+	if ($p != null){
+		$msg = 'Bonjour, ' . $p->getPrenom() .', la reunion '. $num .' a été annulée.';	
+		envoyer_mail($p->getMail(), "AGENDA: suppression réunion", $msg );
+	}
+}
+	
 
 }//end class
 
