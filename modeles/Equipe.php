@@ -49,7 +49,7 @@ class Equipe{
 	public function listerEquipes($liste){
 		echo '<ul class="liste_equipes">';
 		foreach($liste as $value){
-			echo '<li class="equipe"><input type="hidden" name="'.$value['ID_EQUIPE'].'">'.$value['NOM_EQUIPE'].'</li>';
+			echo '<li><input type="checkbox" class="equipe">'.$value['NOM_EQUIPE'].'</li>';
 		}
 		echo'</ul>';
 	}
