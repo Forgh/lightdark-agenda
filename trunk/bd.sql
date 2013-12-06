@@ -1,3 +1,5 @@
+USE projetslagenda;
+
 # -----------------------------------------------------------------------------
 #       NETTOYAGE
 # -----------------------------------------------------------------------------
@@ -50,7 +52,7 @@ CREATE TABLE PARTICIPANT
 
  CREATE TABLE APPARTENIR_A
  (
- ID_PARTICIPANT INT(4) UNSIGNED NOT NULL;
+ ID_PARTICIPANT INT(4) UNSIGNED NOT NULL,
  ID_EQUIPE INT(4) UNSIGNED NOT NULL,
  CONSTRAINT pk_appartenir_aq PRIMARY KEY (ID_PARTICIPANT, ID_EQUIPE),
  CONSTRAINT fk_appartenir_a_participant FOREIGN KEY (ID_PARTICIPANT) REFERENCES PARTICIPANT(ID_PARTICIPANT),
