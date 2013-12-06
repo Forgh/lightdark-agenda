@@ -1,4 +1,22 @@
 # -----------------------------------------------------------------------------
+#       NETTOYAGE
+# -----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS EST_DISPONIBLE;
+DROP TABLE IF EXISTS EST_ABSENT;
+DROP TABLE IF EXISTS PARTICIPE;
+DROP TABLE IF EXISTS REUNION;
+DROP TABLE IF EXISTS SALLE;
+DROP TABLE IF EXISTS MOMENT;
+DROP TABLE IF EXISTS FAIRE_PARTIE_DE;
+DROP TABLE IF EXISTS SERVICE;
+DROP TABLE IF EXISTS APPARTENIR_A;
+DROP TABLE IF EXISTS EQUIPE;
+DROP TABLE IF EXISTS PARTICIPANT;
+
+
+
+# -----------------------------------------------------------------------------
 #       TABLE : PARTICIPANT
 # -----------------------------------------------------------------------------
 
