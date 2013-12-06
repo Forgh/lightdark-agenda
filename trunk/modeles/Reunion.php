@@ -99,7 +99,12 @@ class Reunion{
 	}
 	
 	
-	public static function ajouterParticipant(){}
+	public static function ajouterParticipant($numReunion, $idParticipant){
+		global $bdd;
+		$ajout = $bdd -> prepare('INSERT INTO PARTICIPE VALUES (?, ?)');
+		$ajout = $bdd -> execute(array($numReunion, $idParticipant));
+		}
+	
 	public static function retirerParticipant(){}
 	public static function estCreateur(){}
 	public static function afficher(){}//retourne un moyen d'afficher la réunion, ses infos, son rapport si terminée
