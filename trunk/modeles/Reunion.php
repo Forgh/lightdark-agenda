@@ -83,6 +83,21 @@ class Reunion{
 		$nouveau_membre -> execute(array(/* les paramètres */));
 	}
 	
+	public function getListeParticipants($num){/*Retourne la liste des Id des membres participant à la réunion donnée par $num*/
+		global $bdd;
+		$membres = $bdd -> prepare('SELECT ID_PARTICIPANT FROM REUNION WHERE ID_REUNION = ?');
+		$membres = $bdd -> execute(array($num));
+		$tuple = $membres -> fetchAll();/*tableau*/
+		
+		return $tuple;
+	}
+	
+	public function supprimerReunion($num){
+		global $bdd;
+		$suppression = bdd -> prepare('DELETE FROM REUNION WHERE ID_REUNION = ?');
+		$suppression = $bdd -> execute(array($num));
+	}
+	
 	
 	public static function ajouterParticipant(){}
 	public static function retirerParticipant(){}

@@ -51,8 +51,12 @@ class Utilisateur{
 		return $tuple;
 	}
 	
-	public function getListeMembres(){
+	public function getListeMembres(){/*Retourne la liste des Id des membres de la table*/
+		global $bdd;
+		$membres = $bdd -> query('SELECT NOM FROM PARTICIPANT');
+		$tuple = $membres -> fetchAll();/*tableau*/
 		
+		return $tuple;
 	}
 	
 	
