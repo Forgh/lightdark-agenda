@@ -68,6 +68,23 @@ class Utilisateur{
 		return $tuple;
 	}	
 	
+		public function __construct ($id, $nom, $prenom, $mail, $statut, $agenda){
+		$this ->id = $id;
+		$this ->nom = $nom;
+		$this ->prenom = $prenom;
+		$this ->mail = $mail;
+		$this ->statut = $statut;
+		$this ->agenda = $agenda;
+		
+	}
+	
+	public function getUserbyId($id){
+		global $bdd;
+		$u = $bdd -> prepare('SELECT * FROM PARTICIPANT WHERE ID = ?');
+		$u = $bdd -> execute(array($id));
+		$u = $u -> fetchAll();
+		return new Utilisateur($u['ID_PARTICIPANT'], $u['NOM'], $u['PRENOM'], $u['MAIL'], NULL, NULL);
+	}
 
 
 }//end class
