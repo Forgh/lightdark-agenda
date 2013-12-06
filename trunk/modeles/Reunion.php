@@ -50,22 +50,37 @@ class Reunion{
 	public function setCompteRendu($cr) {
 		$this->compteRendu=$cr;
 	}
+	
+	public function setListeParticipants($lp) {
+		$this->listeParticipants=$lp;
+	}
+	
+	public function setListeAbsents($la) {
+		$this->listeAbsents=$la;
+	}
+	
+	public function setStatut($statut) {
+		$this->statut=$statut;
+	}
+	
+	public function setPlage($cr) {
+		$this->plage=$cr;
+	}
 	/********** Fin Setter ***************/
 	
-	public function getReunionById($id){
+	public function getReunionByNum($num){
 		global $bdd;
 		$reunion = $bdd->prepare('SELECT * FROM REUNION WHERE ID_REUNION = ?');
-		$reunion = $bdd->execute(array($id));
+		$reunion = $bdd->execute(array($num));
 		$tuple = $reunion -> fetchAll();
 			
-		return new Reunion(/*les paramètres*/);
+		return new Reunion($tuple['ID_REUNION'], $tuple['ID_CHEF_REUNION'], $tuple['SUJET'], NULL, NULL, NULL,$tuple['SALLE'], NULL, NULL);
 	}
 	
 	public function update() {
 		global $bdd;
 		$nouveau_membre = $bdd -> prepare('UPDATE REUNION SET  WHERE ID_REUNION= :id_reunion');
-		$nouveau_membre -> execute(array(/* les paramètres */
-									));
+		$nouveau_membre -> execute(array(/* les paramètres */));
 	}
 	
 	
@@ -76,6 +91,18 @@ class Reunion{
 	public static function notifierCreation(){};//"Eh, on a programmé une réunion et t'es invité"
 	public static function notifierAnnulation(){};
 	
+	public Reunion ($num, $chef, $sujet, $listeParticipants, $plage, $statut, $compteRendu) {
+		$this->numReunion = $num;
+		$this->chefReunion = $chef;
+		$this->sujet = $sujet;
+		$this->listeParticipants = $listeParticipants;
+		$this->listeParticipants = $listeAbsents;
+		$this->plage = $plage;
+		$this->salle = $salle;
+		$this->statut= $statut;
+		$this->compteRendu = $compteRendu;
+				
+	}
 	
 
 }//end class

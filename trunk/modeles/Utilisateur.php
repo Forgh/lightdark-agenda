@@ -1,6 +1,7 @@
 <?php 
 //connexion à la BD
 class Utilisateur{
+	private $id;
 	private $nom;
 	private $prenom;
 	private $statut;//chef d'équipe ?
@@ -18,6 +19,10 @@ class Utilisateur{
 	/***********  Getters  ***********/
 	public function getNom() { //attention à la MAJ
 	return $this->nom;
+	}
+	
+	public function getId() { //attention à la MAJ
+	return $this->id;
 	}
 	
 	public function getPrenom() { 
