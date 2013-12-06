@@ -32,7 +32,19 @@ class Equipe{
 	}
 	/*********** Fin Getters  ***********/
 	
-
+	public function getEquipesFromService($service){
+		global $bdd;
+		
+		$equipes = $bdd->prepare('	SELECT EQUIPE.ID_EQUIPE, EQUIPE.NOM_EQUIPE
+									FROM EQUIPE, FAIRE_PARTIR_DE, SERVICE
+									WHERE EQUIPE.ID_EQUIPE=FAIRE_PARTIR_DE.ID_EQUIPE
+										AND SERVICE.ID_SERVICE=FAIRE_PARTIR_DE.ID_SERVICE
+										AND SERVICE.ID_SERVICE= ? ');
+		$equipes->execute(array($services));
+		$tuples = $equipes->fetchAll();
+		
+		return $tuples;
+	}
 }//end class
 
 ?>
