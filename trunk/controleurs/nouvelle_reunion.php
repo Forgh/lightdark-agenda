@@ -11,10 +11,10 @@
 	
 	
 
-	if (Salle::estDispo($jou, $mom) and $cher != null){
+	if (Salle::estDispo($jou, $mom) and $chef != null){
 		$reunion = new Reunion($num, $chef, $sujet, $listID, $moment, $statut, "");
 		foreach($listID as $liste){
-			$u = Utilisateur::getParID($liste);
+			$u = Utilisateur::getUserById($liste);
 			mail_nouvelle_reunion($u->getNom(), $u->getMail());
 		}
 		

@@ -6,7 +6,7 @@
 	if ($reunion != null){
 		$participants = $reunion->getListeParticipants(); // je suppose que c'est un array d'id d'utilisateur
 		foreach($participants as $p){
-			$u = Utilisateur::getParID($p);
+			$u = Utilisateur::getUserById($p);
 			 mail_annulation_reunion($u->getNumReunion() ,$u->getEmail());
 		}
 
