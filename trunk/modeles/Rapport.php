@@ -1,5 +1,7 @@
 <?php 
 //connexion à la BD
+include('include/connect.php');
+
 class Rapport{
 	private $titre;
 	private $contenu;

@@ -1,11 +1,13 @@
 <?php 
-//connexion à la BD			
+//connexion à la BD		
+include('include/connect.php');
+	
 class Salle{
 	private $numeroSalle;
 	private $nomSalle;
 	private $agendaSalle;//planning des disponibilites de la salle
 	
-	public static function estDispo(/*heure et jour/date*/);
+	//public abstract function estDispo(/*heure et jour/date*/);
 
 	
 	/***********  Getters  ***********/

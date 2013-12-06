@@ -1,14 +1,16 @@
 <?php 
 //connexion à la BD
+include('include/connect.php');
+
 class Agenda{//un agenda affecté à une personne ou une salle
 	private $listeJours;//un moyen de structurer des heures et des disponibilites
 	
 	
-	public static function estLibre(){};
-	public static function estPris(){};//Les deux sont-ils utiles ?
-	public static function afficher(){};//Afficher l'agenda --> rendu
-	public static function ajouterPlage(){};//ajout d'une plage d'occupation
-	public static function enleverPlage(){};
+	//public abstract function estLibre(){}
+	//public abstract function estPris(){}//Les deux sont-ils utiles ?
+	//public abstract function afficher(){}//Afficher l'agenda --> rendu
+	//public abstract function ajouterPlage(){}//ajout d'une plage d'occupation
+	//public abstract function enleverPlage(){}
 	
 	/***********  Getters  ***********/
 	public function getlisteJours() {

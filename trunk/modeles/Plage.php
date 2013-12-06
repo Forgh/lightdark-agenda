@@ -1,13 +1,14 @@
 <?php
 /*Demander au prof gestion du temps*/
+ include('include/connect.php');
  
 //connexion à la BD
 class Plage{//une plage horaire
 	private $type;//AM || PM
 	private $date;//le XX/Y/ZZZZ
 	
-	public static function getHeureDebut(){}
-	public static function getType(){}//le type --> Matin/Aprèm
+	//public abstract function getHeureDebut(){}
+	//public abstract function getType(){}//le type --> Matin/Aprèm
 	
 	
 	/***********  Getters  ***********/

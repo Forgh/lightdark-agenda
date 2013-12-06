@@ -1,5 +1,7 @@
 <?php 
 //connexion à la BD
+include('include/connect.php');
+
 class Equipe{
 	private $chef;
 	private $listeMembres;//liste d'utilisateurs
