@@ -77,10 +77,18 @@ class Reunion{
 		return new Reunion($tuple['ID_REUNION'], $tuple['ID_CHEF_REUNION'], $tuple['SUJET'], NULL, NULL, NULL,$tuple['SALLE'], NULL, NULL);
 	}
 	
-	public function update() {
+	public function update($new) {
+		 
 		global $bdd;
-		$nouveau_membre = $bdd -> prepare('UPDATE REUNION SET  WHERE ID_REUNION= :id_reunion');
-		$nouveau_membre -> execute(array(/* les paramètres */));
+		$nouveau_membre = $bdd -> prepare('UPDATE REUNION SET ID_CHEF_REUNION = :ID_CHEF_REUNION, ID_DATE=:ID_DATE, SUJET=:SUJET, SALLE=:SALLE, compte_rendu=:compte_rendu WHERE ID_REUNION= :id_reunion');
+		$nouveau_membre -> execute(array(
+							'ID_CHEF_REUNION' => $new->chefReunion,
+							'ID_DATE' => $new->plage,
+							'SUJET' => $new->sujet,
+							'SALLE' => $new->salle,
+							'compte_rendu' => $new->compteRendu,
+							'id_reunion' => $new->numReunion
+		));
 	}
 	
 	public function getListeParticipants($num){/*Retourne la liste des Id des membres participant à la réunion donnée par $num*/
@@ -123,9 +131,6 @@ class Reunion{
 	public static function afficher(){}//retourne un moyen d'afficher la réunion, ses infos, son rapport si terminée
 	/*Redondant avec un controleur qui serait chargé de faire ca ?*/
 	
-	
-	public static function notifierCreation(){}//"Eh, on a programmé une réunion et t'es invité"
-	public static function notifierAnnulation(){}
 	
 	public function __construct ($num, $chef, $sujet, $listeParticipants, $plage, $statut, $compteRendu) {
 		$this->numReunion = $num;
