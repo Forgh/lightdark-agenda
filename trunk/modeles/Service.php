@@ -23,7 +23,16 @@ class Service{
 	}
 	/***********  Fin Getters **********/
 
-
+	public function getAllServices() {
+		global $bdd;
+		
+		$services = $bdd->query('SELECT * FROM SERVICES');
+		$tuples = $services->fetchAll();
+		
+		return $tuples;
+	}
+	
+		
 }//end class
 
 ?>

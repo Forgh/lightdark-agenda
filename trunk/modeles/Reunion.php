@@ -85,13 +85,13 @@ class Reunion{
 	
 	
 	public static function ajouterParticipant(){}
-	public static function retirerParticipant(){};
-	public static function estCreateur(){};
-	public static function afficher(){};//retourne un moyen d'afficher la réunion, ses infos, son rapport si terminée
-	public static function notifierCreation(){};//"Eh, on a programmé une réunion et t'es invité"
-	public static function notifierAnnulation(){};
+	public static function retirerParticipant(){}
+	public static function estCreateur(){}
+	public static function afficher(){}//retourne un moyen d'afficher la réunion, ses infos, son rapport si terminée
+	public static function notifierCreation(){}//"Eh, on a programmé une réunion et t'es invité"
+	public static function notifierAnnulation(){}
 	
-	public Reunion ($num, $chef, $sujet, $listeParticipants, $plage, $statut, $compteRendu) {
+	public function __construct ($num, $chef, $sujet, $listeParticipants, $plage, $statut, $compteRendu) {
 		$this->numReunion = $num;
 		$this->chefReunion = $chef;
 		$this->sujet = $sujet;
