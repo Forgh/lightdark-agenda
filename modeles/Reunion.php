@@ -68,7 +68,7 @@ class Reunion{
 	public function setPlage($cr) {
 		$this->plage=$cr;
 	}
-	/********** Fin Setter ***************/
+	/********** Fin Setters ***************/
 	
 	public function getReunionByNum($num){
 		global $bdd;
@@ -148,7 +148,7 @@ class Reunion{
 	}
 	
 	function envoyer_mail($destinataire, $sujet, $msg){
-	$headers = "From: " . $expediteur . "\r\n" ."Reply-To: " . $expediteur . "\r\n";
+	$headers = 'From: "Agenda interne" \r\n';
 	mail($destinataire,$sujet,$msg,$headers);
 }
 
@@ -156,16 +156,16 @@ class Reunion{
 	function mail_nouvelle_reunion($num,$id){
 	$p = Utilisateur::getUserById($id);
 	if ($p != null){
-		$msg = 'Bonjour, ' . $p->getPrenom() .', la reunion '. $num .' a été créée.';	
-		envoyer_mail($p->getMail(), "AGENDA: ajout réunion", $msg );
+		$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été créée.';	
+		envoyer_mail($p->getMail(), "AGENDA: ajout d'une réunion", $msg );
 	}
 }
 
 function mail_annulation_reunion($num, $id){
 	$p = Utilisateur::getUserById($id);
 	if ($p != null){
-		$msg = 'Bonjour, ' . $p->getPrenom() .', la reunion '. $num .' a été annulée.';	
-		envoyer_mail($p->getMail(), "AGENDA: suppression réunion", $msg );
+		$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été annulée.';	
+		envoyer_mail($p->getMail(), "AGENDA: suppression d'une réunion", $msg );
 	}
 }
 	
