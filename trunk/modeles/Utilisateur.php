@@ -57,9 +57,9 @@ class Utilisateur{
 	}
 	
 	public function listerMembre($liste){
-		echo '<ul class="liste_membres">';
+		echo '<ul class="liste_all_membres">';
 		foreach($liste as $value){
-			echo'<li class="membre"><input type="checkbox" name="'.$value['ID_PARTICIPANT'].'"> '.$value['PRENOM'].' '.$value['NOM'].'</li>';
+			echo'<li><input type="checkbox" class="cat_check" name ="membres[]" value="'.$value['ID_PARTICIPANT'].'"><a> '.$value['PRENOM'].' '.$value['NOM'].'</a></li>';
 		}
 		echo '</ul>';
 	}

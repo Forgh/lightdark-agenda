@@ -194,8 +194,8 @@ INSERT INTO `PARTICIPANT`(`ID_PARTICIPANT`, `NOM`, `PRENOM`, `PASSWORD`, `MAIL`)
 INSERT INTO `PARTICIPANT`(`ID_PARTICIPANT`, `NOM`, `PRENOM`, `PASSWORD`, `MAIL`) VALUES (3,'LeCarAnglais','Red','London','lecaranglais@yopmail.fr');
 
 INSERT INTO `SERVICE` (`ID_SERVICE`, `NOM`) VALUES
-(1, 'Refaire exige'),
-(2, 'Interace graphique du Taquin');
+(1, 'Informatique'),
+(2, 'Administration');
 
 INSERT INTO `FAIRE_PARTIE_DE` (`ID_SERVICE`, `ID_EQUIPE`) VALUES
 (1, 1);
