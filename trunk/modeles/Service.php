@@ -32,7 +32,7 @@ class Service{
 		return $tuples;
 	}
 	
-	public function listerServices($liste){
+	public function listerServices($liste){/*Fait une liste ordonnée des services de la base*/
 		echo '<ul class="liste_services">';
 		foreach($liste as $value){
 			echo '<li><input type="checkbox" class="service">'.$value['NOM_SERVICE'].'</li>';

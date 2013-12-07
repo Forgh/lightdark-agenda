@@ -13,6 +13,8 @@ class Agenda{//un agenda affecté à une personne ou une salle
 	//public abstract function enleverPlage(){}
 	
 	/***********  Getters  ***********/
+	
+	
 	public function getlisteJours() {
 	return $this->listeJours;
 	}
