@@ -13,7 +13,7 @@
 		
 		<div id="bodycentered">
 			
-            <h1>Ajouter une réunion</h12>
+            <h1>Ajouter une rÃ©union</h1>
             <?php include('controleurs/liste_check_membre.php'); ?>
             
             

@@ -37,12 +37,12 @@ class Equipe{
 	public function getEquipesFromService($service){
 		global $bdd;
 		
-		$equipes = $bdd->prepare('	SELECT EQUIPE.ID_EQUIPE, EQUIPE.NOM_EQUIPE
-									FROM EQUIPE, FAIRE_PARTIR_DE, SERVICE
-									WHERE EQUIPE.ID_EQUIPE=FAIRE_PARTIR_DE.ID_EQUIPE
-										AND SERVICE.ID_SERVICE=FAIRE_PARTIR_DE.ID_SERVICE
+		$equipes = $bdd->prepare('	SELECT EQUIPE.ID_EQUIPE, EQUIPE.NOM
+									FROM EQUIPE, FAIRE_PARTIE_DE, SERVICE
+									WHERE EQUIPE.ID_EQUIPE=FAIRE_PARTIE_DE.ID_EQUIPE
+										AND SERVICE.ID_SERVICE=FAIRE_PARTIE_DE.ID_SERVICE
 										AND SERVICE.ID_SERVICE= ? ');
-		$equipes->execute(array($services));
+		$equipes->execute(array($service));
 		$tuples = $equipes->fetchAll();
 		
 		return $tuples;
@@ -51,7 +51,7 @@ class Equipe{
 	public function listerEquipes($liste){
 		echo '<ul class="liste_equipes">';
 		foreach($liste as $value){
-			echo '<li><input type="checkbox" class="equipe">'.$value['NOM_EQUIPE'].'</li>';
+			echo '<li><input type="checkbox" class="equipe">'.$value['NOM'].'</li>';
 		}
 		echo'</ul>';
 	}
