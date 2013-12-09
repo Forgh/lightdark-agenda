@@ -116,12 +116,14 @@ class Reunion{
 		}
 	
 	public static function retirerParticipant($numReunion, $idParticipant){
+		/*utile si on considère qu'un décommandé est marqué comme tel mais toujours présent dans PARTICIPE ?*/
 		global $bdd;
 		$suppression = $bdd -> prepare('DELETE FROM PARTICIPE WHERE ID_PARTICIPANT = ? AND ID_REUNION = ?');
 		$suppression = $bdd -> execute(array($numReunion, $idParticipant));
 		}
 	
-	public static function estChef($numReunion, $idParticipant){/*Retourne vrai si l'id donné est celui du propriétaire de la réunion, faux sinon*/
+	public static function estChef($numReunion, $idParticipant){
+		/*Retourne vrai si l'id donné est celui du propriétaire de la réunion, faux sinon*/
 	global $bdd;
 	$chef = $bdd -> prepare('SELECT ID_CHEF_REUNION FROM REUNION WHERE ID_CHEF_REUNION = ?');
 	$chef = $bdd -> execute(array($numReunion));
@@ -147,27 +149,52 @@ class Reunion{
 				
 	}
 	
-	function static envoyer_mail($destinataire, $sujet, $msg){
-	$headers = 'From: "Agenda interne" \r\n';
-	mail($destinataire,$sujet,$msg,$headers);
-}
-
-
-	function static mail_nouvelle_reunion($num,$id){
-	$p = Utilisateur::getUserById($id);
-	if ($p != null){
-		$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été créée.';	
-		envoyer_mail($p->getMail(), "AGENDA: ajout d'une réunion", $msg );
+	public static function envoyer_mail($destinataire, $sujet, $msg){
+		$headers = 'From: "Agenda interne" \r\n';
+		mail($destinataire,$sujet,$msg,$headers);
 	}
-}
 
-function static mail_annulation_reunion($num, $id){
-	$p = Utilisateur::getUserById($id);
-	if ($p != null){
-		$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été annulée.';	
-		envoyer_mail($p->getMail(), "AGENDA: suppression d'une réunion", $msg );
+
+	public static function mail_nouvelle_reunion($num,$id){
+		$p = Utilisateur::getUserById($id);
+		if ($p != null){
+			$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été créée.';	
+			envoyer_mail($p->getMail(), "AGENDA: ajout d'une réunion", $msg );
+		}
 	}
-}
+
+	public static function mail_annulation_reunion($num, $id){
+		$p = Utilisateur::getUserById($id);
+		if ($p != null){
+			$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été annulée.';	
+			envoyer_mail($p->getMail(), "AGENDA: suppression d'une réunion", $msg );
+		}
+	}
+	
+	public static function mail_signaler_absence($idParticipant, $numReunion){
+		/*Envoie au chef de réunion "Machin s'est décommandé de la réunion Truc"*/
+		$reunion = Reunion::getReunionByNum($numReunion);
+		$chef = $reunion->getChefReunion();/*Récupère l'id*/
+		$chef = Utilisateur::getUserById($chef);/*Récupère l'User du chef de réunion*/
+		$user = Utilisateur::getUserById($idParticipant);/*et celui du décommandé*/
+		$msg = 'Bonjour '.$chef->getPrenom().', le participant '.$user->getPrenom().' '.$user->getNom().'s\'est décommandé de la réunion "'
+				.$reunion->getSujet().'", numéro '.$reunion->getNumReunion().'.';
+		envoyer_mail($chef->getMail(), 'AGENDA : un participant s\'est décommandé', $msg);
+		
+	}
+	
+	public static function signalerAbsence($idParticipant, $numReunion){
+		/*Action à la sortie de signaler_absence.php*/
+		global $bdd;
+		$reunion = Reunion::getReunionByNum($numReunion);
+		$decommander = $bdd->prepare('UPDATE PARTICIPE SET ETAT = :ETAT WHERE ID_REUNION= :ID_REUNION AND ID_PARTICIPANT = :ID_PARTICIPANT');
+		$decommander -> execute(array(
+							'ID_REUNION' => $numreunion,
+							'ETAT' => 'Décommandé',
+							'ID_PARTICIPANT' => $idParticipant
+		));
+		Reunion::mail_signaler_absence($idParticipant, $numReunion);
+	}
 	
 
 }//end class
