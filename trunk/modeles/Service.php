@@ -23,7 +23,7 @@ class Service{
 	}
 	/***********  Fin Getters **********/
 
-	public function getAllServices() {
+	public static function getAllServices() {
 		global $bdd;
 		
 		$services = $bdd->query('SELECT * FROM SERVICE');
@@ -32,7 +32,7 @@ class Service{
 		return $tuples;
 	}
 	
-	public function listerServices($liste){/*Fait une liste ordonnée des services de la base*/
+	public static function listerServices($liste){/*Fait une liste ordonnée des services de la base*/
 		echo '<ul class="liste_services">';
 		foreach($liste as $value){
 			echo '<li><input type="checkbox" class="service">'.$value['NOM'].'</li>';
