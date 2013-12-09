@@ -9,12 +9,12 @@
 
 <div id="listes">
 	<ul>
-		<li><a>Directeur<a>
+		<li><a>Directeur</a>
 			<ul>
-				<li> <a>M. Dupont André</a></li>
+				<li><a>M. Dupont André</a></li>
 			</ul>
 		</li>
-		<li><a>Services<a>
+		<li><a>Services</a>
 			<ul>
 				<?php 
 					foreach($services as $services_values){
