@@ -93,7 +93,8 @@ class Reunion{
 		));
 	}
 	
-	public static function getListeParticipants($num){/*Retourne la liste des Id des membres participant à la réunion donnée par $num*/
+	public static function getListeParticipants($num){
+		/*Retourne la liste des Id des membres participant à la réunion, décommandés ou pas*/
 		global $bdd;
 		$membres = $bdd -> prepare('SELECT ID_PARTICIPANT FROM REUNION WHERE ID_REUNION = ?');
 		$membres = $bdd -> execute(array($num));
@@ -102,9 +103,21 @@ class Reunion{
 		return $tuple;
 	}
 	
+	public static function getListePresents($num){
+		/*Retourne la liste des Id des membres décommandés de la réunion*/
+		global $bdd;
+		$membres = $bdd -> prepare('SELECT ID_PARTICIPANT FROM REUNION WHERE ID_REUNION = ? AND ETAT = ?');
+		$membres = $bdd -> execute(array($num, 'Participera'));
+		$tuple = $membres -> fetchAll();/*tableau*/
+		
+		return $tuple;
+	}
+	
+	
+	
 	public static function supprimerReunion($num){
 		global $bdd;
-		$suppression = bdd -> prepare('DELETE FROM REUNION WHERE ID_REUNION = ?');
+		$suppression = $bdd -> prepare('DELETE FROM REUNION WHERE ID_REUNION = ?');
 		$suppression = $bdd -> execute(array($num));
 	}
 	
