@@ -166,7 +166,7 @@ CREATE TABLE EST_ABSENT
 # -----------------------------------------------------------------------------
 #       TABLE : EST_DISPONIBLE
 # -----------------------------------------------------------------------------
-
+ 
 CREATE TABLE EST_DISPONIBLE
  (
    ID_PARTICIPANT INT(4) UNSIGNED NOT NULL ,
@@ -178,4 +178,26 @@ CREATE TABLE EST_DISPONIBLE
    CONSTRAINT fk_est_disponible_date FOREIGN KEY (ID_DATE) REFERENCES MOMENT(ID_DATE)
  ) engine=innodb CHARACTER SET UTF8 COLLATE utf8_unicode_ci;
 
+# -----------------------------------------------------------------------------
+#			DONNEES
+# -----------------------------------------------------------------------------
 
+INSERT INTO `EQUIPE`(`ID_EQUIPE`, `NOM`) VALUES (1,"EQ1");
+INSERT INTO `EQUIPE`(`ID_EQUIPE`, `NOM`) VALUES (2,"EQ2");
+
+INSERT INTO `SALLE`(`NUM_SALLE`, `NOM_SALLE`) VALUES (1,"LaOne");
+INSERT INTO `SALLE`(`NUM_SALLE`, `NOM_SALLE`) VALUES (2,"LaTWO");
+
+INSERT INTO `PARTICIPANT`(`ID_PARTICIPANT`, `NOM`, `PRENOM`, `PASSWORD`, `MAIL`) VALUES (1,'LeCHat','Felix','croquette','lechat@yopmail.fr');
+INSERT INTO `PARTICIPANT`(`ID_PARTICIPANT`, `NOM`, `PRENOM`, `PASSWORD`, `MAIL`) VALUES (2,'LeFruit','Pomme','pepin','lefruit@yopmail.fr');
+INSERT INTO `PARTICIPANT`(`ID_PARTICIPANT`, `NOM`, `PRENOM`, `PASSWORD`, `MAIL`) VALUES (3,'LeCarAnglais','Red','London','lecaranglais@yopmail.fr');
+
+INSERT INTO `SERVICE` (`ID_SERVICE`, `NOM`) VALUES
+(1, 'Informatique'),
+(2, 'Administration');
+
+INSERT INTO `FAIRE_PARTIE_DE` (`ID_SERVICE`, `ID_EQUIPE`) VALUES
+(1, 1);
+
+INSERT INTO `APPARTENIR_A`(`ID_PARTICIPANT`, `ID_EQUIPE`) VALUES (1, 1);
+INSERT INTO `APPARTENIR_A`(`ID_PARTICIPANT`, `ID_EQUIPE`) VALUES (2, 1);
