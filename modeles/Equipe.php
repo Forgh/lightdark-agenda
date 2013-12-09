@@ -19,7 +19,7 @@ class Equipe{
 	}
 	
 		
-	public function getMembresEquipe($id){/*renvoie tous les utilisateurs de la table*/
+	public static function getMembresEquipe($id){/*renvoie tous les utilisateurs de la table*/
 			
 		global $bdd;
 		$membres = $bdd -> prepare('SELECT PARTICIPANT.ID_PARTICIPANT, PARTICIPANT.NOM, PARTICIPANT.PRENOM, PARTICIPANT.MAIL
@@ -34,7 +34,7 @@ class Equipe{
 	}
 	/*********** Fin Getters  ***********/
 	
-	public function getEquipesFromService($service){
+	public static function getEquipesFromService($service){
 		global $bdd;
 		
 		$equipes = $bdd->prepare('	SELECT EQUIPE.ID_EQUIPE, EQUIPE.NOM
@@ -48,7 +48,7 @@ class Equipe{
 		return $tuples;
 	}
 	
-	public function listerEquipes($liste){
+	public static function listerEquipes($liste){
 		echo '<ul class="liste_equipes">';
 		foreach($liste as $value){
 			echo '<li><input type="checkbox" class="equipe">'.$value['NOM'].'</li>';

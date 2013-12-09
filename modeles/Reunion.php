@@ -70,7 +70,7 @@ class Reunion{
 	}
 	/********** Fin Setters ***************/
 	
-	public function getReunionByNum($num){
+	public static function getReunionByNum($num){
 		global $bdd;
 		$reunion = $bdd->prepare('SELECT * FROM REUNION WHERE ID_REUNION = ?');
 		$reunion = $bdd->execute(array($num));
@@ -79,7 +79,7 @@ class Reunion{
 		return new Reunion($tuple['ID_REUNION'], $tuple['ID_CHEF_REUNION'], $tuple['SUJET'], NULL, NULL, NULL,$tuple['SALLE'], NULL, NULL);
 	}
 	
-	public function update($new) {
+	public static function update($new) {
 		 
 		global $bdd;
 		$nouveau_membre = $bdd -> prepare('UPDATE REUNION SET ID_CHEF_REUNION = :ID_CHEF_REUNION, ID_DATE=:ID_DATE, SUJET=:SUJET, SALLE=:SALLE, compte_rendu=:compte_rendu WHERE ID_REUNION= :id_reunion');
@@ -93,7 +93,7 @@ class Reunion{
 		));
 	}
 	
-	public function getListeParticipants($num){/*Retourne la liste des Id des membres participant à la réunion donnée par $num*/
+	public static function getListeParticipants($num){/*Retourne la liste des Id des membres participant à la réunion donnée par $num*/
 		global $bdd;
 		$membres = $bdd -> prepare('SELECT ID_PARTICIPANT FROM REUNION WHERE ID_REUNION = ?');
 		$membres = $bdd -> execute(array($num));
@@ -102,7 +102,7 @@ class Reunion{
 		return $tuple;
 	}
 	
-	public function supprimerReunion($num){
+	public static function supprimerReunion($num){
 		global $bdd;
 		$suppression = bdd -> prepare('DELETE FROM REUNION WHERE ID_REUNION = ?');
 		$suppression = $bdd -> execute(array($num));
@@ -147,13 +147,13 @@ class Reunion{
 				
 	}
 	
-	function envoyer_mail($destinataire, $sujet, $msg){
+	function static envoyer_mail($destinataire, $sujet, $msg){
 	$headers = 'From: "Agenda interne" \r\n';
 	mail($destinataire,$sujet,$msg,$headers);
 }
 
 
-	function mail_nouvelle_reunion($num,$id){
+	function static mail_nouvelle_reunion($num,$id){
 	$p = Utilisateur::getUserById($id);
 	if ($p != null){
 		$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été créée.';	
@@ -161,7 +161,7 @@ class Reunion{
 	}
 }
 
-function mail_annulation_reunion($num, $id){
+function static mail_annulation_reunion($num, $id){
 	$p = Utilisateur::getUserById($id);
 	if ($p != null){
 		$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été annulée.';	

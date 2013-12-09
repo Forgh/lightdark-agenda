@@ -47,7 +47,7 @@ class Utilisateur{
 	}
 	/***********  Fin Getters **********/
 	
-	public function getAllUsers(){/*renvoie tous les utilisateurs de la table*/
+	public static function getAllUsers(){/*renvoie tous les utilisateurs de la table*/
 			
 		global $bdd;
 		$membres = $bdd -> query('SELECT * FROM PARTICIPANT');
@@ -56,7 +56,7 @@ class Utilisateur{
 		return $tuple;
 	}
 	
-	public function listerMembre($liste){
+	public static function listerMembre($liste){
 		echo '<ul class="liste_all_membres">';
 		foreach($liste as $value){
 			echo'<li><input type="checkbox" class="cat_check" name ="membres[]" value="'.$value['ID_PARTICIPANT'].'"><a> '.$value['PRENOM'].' '.$value['NOM'].'</a></li>';
@@ -66,7 +66,7 @@ class Utilisateur{
 	
 	
 
-	public function getListeMembres(){/*Retourne la liste des Id, prénoms et noms des membres de la table*/
+	public static function getListeMembres(){/*Retourne la liste des Id, prénoms et noms des membres de la table*/
 		global $bdd;
 		$membres = $bdd -> query('SELECT ID_PARTICIPANT, NOM, PRENOM FROM PARTICIPANT');
 		$tuple = $membres -> fetchAll();/*tableau*/
@@ -83,7 +83,7 @@ class Utilisateur{
 		
 	}
 	
-	public function getUserById($id){
+	public static function getUserById($id){
 		global $bdd;
 		$u = $bdd -> prepare('SELECT * FROM PARTICIPANT WHERE ID = ?');
 		$u = $bdd -> execute(array($id));
