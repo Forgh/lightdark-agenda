@@ -38,7 +38,8 @@ class Reunion{
 	return $this->salle;
 	}
 	
-	public function getStatut() {
+	public function getStatut() {/*"a venir", "en cours", "passée"*/
+		if()
 	return $this->statut;
 	}
 	
@@ -108,6 +109,16 @@ class Reunion{
 		global $bdd;
 		$membres = $bdd -> prepare('SELECT ID_PARTICIPANT FROM REUNION WHERE ID_REUNION = ? AND ETAT = ?');
 		$membres = $bdd -> execute(array($num, 'Participera'));
+		$tuple = $membres -> fetchAll();/*tableau*/
+		
+		return $tuple;
+	}
+	
+	public static function getListeAbsents($num){
+		/*Retourne la liste des Id des membres décommandés de la réunion*/
+		global $bdd;
+		$membres = $bdd -> prepare('SELECT ID_PARTICIPANT FROM REUNION WHERE ID_REUNION = ? AND ETAT = ?');
+		$membres = $bdd -> execute(array($num, 'Décommandé'));
 		$tuple = $membres -> fetchAll();/*tableau*/
 		
 		return $tuple;
