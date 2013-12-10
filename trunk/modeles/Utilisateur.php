@@ -64,6 +64,14 @@ class Utilisateur{
 		echo '</ul>';
 	}
 	
+	public static function afficherListeMembres($liste){/*affiche en liste les membres de la liste*/
+			echo '<ul class="liste_all_membres">';
+			foreach($liste as $value){
+				echo ('<li>'.$value['PRENOM'].' '.$value['NOM'].'</li>');
+			}
+			echo '</ul>';
+	}
+	
 	
 
 	public static function getListeMembres(){/*Retourne la liste des Id, prénoms et noms des membres de la table*/

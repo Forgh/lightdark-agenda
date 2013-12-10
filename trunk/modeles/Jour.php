@@ -7,8 +7,9 @@ class Jour{
 	private $dispoAprem;
 	
 	
+	
 	/***********  Getters  ***********/
-	public function getDispoMatin() { //attention à la MAJ
+	public function getDispoMatin() {
 	return $this->dispoMatin;
 	}
 	
