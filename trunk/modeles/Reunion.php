@@ -114,7 +114,6 @@ class Reunion{
 	}
 	
 	
-	
 	public static function supprimerReunion($num){
 		global $bdd;
 		$suppression = $bdd -> prepare('DELETE FROM REUNION WHERE ID_REUNION = ?');
