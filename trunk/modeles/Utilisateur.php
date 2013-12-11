@@ -64,7 +64,7 @@ class Utilisateur{
 		echo '</ul>';
 	}
 	
-	public static function afficherListeMembres($liste){/*affiche en liste les membres de la liste*/
+	public static function afficherListeMembres($liste){/*affiche en liste les membres de la list*/
 			echo '<ul class="liste_all_membres">';
 			foreach($liste as $value){
 				echo ('<li>'.$value['PRENOM'].' '.$value['NOM'].'</li>');
