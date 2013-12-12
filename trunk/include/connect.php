@@ -1,5 +1,6 @@
 <?php 
 	//bdd local sous Wamp
+	
 	try
 	{
 		$bdd = new PDO('mysql:host=localhost;dbname=projetslagenda','root','');
@@ -9,6 +10,7 @@
 	{
 		die('Erreur : '. $e -> getMessage());
 	}
+	 
 	 
 	 /*
 	//BDD Ovh 
@@ -21,4 +23,17 @@
 	{
 		die('Erreur : '. $e -> getMessage());
 	}*/
+	
+	// BdD JJ
+	/*
+	try
+	{
+		$bdd = new PDO('mysql:host=localhost;dbname=agenda','root','');
+		$bdd-> exec('SET NAMES utf8'); //On indique le jeu de caractères
+	}
+	catch (Exception $e)
+	{
+		die('Erreur : '. $e -> getMessage());
+	}*/
+	
 ?>
