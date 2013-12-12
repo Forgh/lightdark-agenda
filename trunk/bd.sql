@@ -214,3 +214,7 @@ INSERT INTO `MOMENT` (`JOUR`, `TEMPS`) VALUES ("15/12/13", 'après-midi');
 INSERT INTO `REUNION` VALUES (1, 1, 1, 'Commencer cet agenda', 'LaOne', NULL);
 INSERT INTO `REUNION` VALUES (2, 1, 3, 'Continuer cet agenda', 'LaTwo', NULL);
 INSERT INTO `REUNION` VALUES (3, 2, 6, 'Finir cet agenda', 'LaOne', NULL);
+
+INSERT INTO `PARTICIPE` (`ID_REUNION`, `ID_PARTICIPANT`) VALUES (1, 1);
+INSERT INTO `PARTICIPE` VALUES (1, 2, 'Décommandé');
+INSERT INTO `PARTICIPE` VALUES (1, 3, 'Participera');
