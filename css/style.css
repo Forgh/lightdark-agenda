@@ -19,6 +19,8 @@ body {
 	  background: #82BADF;
 }
 
+
+
 @font-face {
 	font-family : 'tallsfilms';
 	src: url('design/tall.ttf');
@@ -29,7 +31,17 @@ h2{
 	font-size:1.9em;
 }
 
-#search {
+table{
+	min-width:50%;
+	border:thin solid black;
+	border-collapse:collapse;
+	text-align:center;
+}
+td, th{
+	border:thin solid black;
+}
+
+#search {/*toujours utilie ?*/
 	float:left;
 	margin-top: 10px;
 	margin-left: 75px;
