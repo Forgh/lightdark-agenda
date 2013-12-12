@@ -1,6 +1,6 @@
 <?php 
 //connexion à la BD
-include('include/connect.php');
+include('../include/connect.php');
 
 class Reunion{
 	private $numReunion;
@@ -25,10 +25,11 @@ class Reunion{
 	public function getSujet() { 
 	return $this->sujet;
 	}
-	
-	public function getListeParticipants() {
+	/*
+	public function getParticipants() {
 	return $this->listePparticipants;
 	}
+	*/
 	
 	public function getPlage() { 
 	return $this->plage;
@@ -38,10 +39,12 @@ class Reunion{
 	return $this->salle;
 	}
 	
-	public function getStatut() {/*"a venir", "en cours", "passée"*/
+	/*
+	public function getStatut() {//"a venir", "en cours", "passée"
 		if()
 	return $this->statut;
 	}
+	*/
 	
 	public function getCompteRendu() {
 		return $this->compteRendu; 
@@ -70,6 +73,17 @@ class Reunion{
 		$this->plage=$cr;
 	}
 	/********** Fin Setters ***************/
+	
+	public static function ajouter_reunion($sujet, $salle, $createur, $idDate){
+		global $bdd;
+		$new = $bdd -> prepare ('INSERT INTO REUNION (ID_CHEF_REUNION, ID_DATE, SUJET, SALLE) VALUES (:chef, :Date, :sujet, :salle)');
+		$new = $bdd -> execute(array(
+			'chef' => $createur,
+			'Date' => $idDate,
+			'sujet' => $sujet,
+			'salle' => $salle
+		));
+	}
 	
 	public static function getReunionByNum($num){
 		global $bdd;

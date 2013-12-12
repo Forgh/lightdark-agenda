@@ -1,6 +1,6 @@
 <?php 
 //connexion à la BD
-include('include/connect.php');
+include('../include/connect.php');
 
 class Agenda{//un agenda affecté à une personne ou une salle
 	private $listeJours;//un moyen de structurer des heures et des disponibilites
