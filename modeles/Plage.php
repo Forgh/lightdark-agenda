@@ -1,6 +1,6 @@
 <?php
 /*Demander au prof gestion du temps*/
- include('include/connect.php');
+ include('../include/connect.php');
  
 //connexion à la BD
 class Plage{//une plage horaire
