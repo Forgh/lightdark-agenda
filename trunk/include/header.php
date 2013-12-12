@@ -22,10 +22,11 @@
 </module_connexion>
 <!--[FIN MODULE DE CONNEXION]-->
 
-<div id="barre_navigation">
+<div align="center" id="barre_navigation">
 <!--Les whitespace permettent de coller les boutons les uns à la suite des autres-->
 <div class="boutonbegin"><a href="index.php">Accueil</a></div><!-- whitespace
 --><div class="bouton"><a href="ctrlproduits.php">Mes disponibilités</a></div><!-- whitespace
+--><div class="bouton"><a href="mes_reunions.php">Mes réunions</a></div><!-- whitespace
 --><div class="boutonend"><a href="contact.php">Voir l'organigramme</a></div><!-- whitespace
 --></div><!--Fin barrenav-->
 
