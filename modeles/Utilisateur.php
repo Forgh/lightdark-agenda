@@ -93,7 +93,7 @@ class Utilisateur{
 	
 	public static function getUserById($id){
 		global $bdd;
-		$u = $bdd -> prepare('SELECT * FROM PARTICIPANT WHERE ID = ?');
+		$u = $bdd -> prepare('SELECT * FROM PARTICIPANT WHERE ID_PARTICIPANT = ?');
 		$u = $bdd -> execute(array($id));
 		$u = $u -> fetchAll();
 		return new Utilisateur($u['ID_PARTICIPANT'], $u['NOM'], $u['PRENOM'], $u['MAIL'], NULL, NULL);

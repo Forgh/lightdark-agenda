@@ -19,7 +19,8 @@ class Agenda{//un agenda affecté à une personne ou une salle
 	return $this->listeJours;
 	}
 	
-	public function getlisteJours() {
+	//!?
+	public function getlisteCours() {
 	return $this->listeCours;
 	}
 	
