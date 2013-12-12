@@ -169,8 +169,7 @@ class Reunion{
 		}
 		
 		
-	public static function afficher(){}//retourne un moyen d'afficher la réunion, ses infos, son rapport si terminée
-	/*Redondant avec un controleur qui serait chargé de faire ca ?*/
+
 	
 	
 	public function __construct ($num, $chef, $sujet, $listeParticipants, $plage, $statut, $compteRendu) {
@@ -231,6 +230,25 @@ class Reunion{
 							'ID_PARTICIPANT' => $idParticipant
 		));
 		Reunion::mail_signaler_absence($idParticipant, $numReunion);
+	}
+	
+	public static function afficher_les_reunions($id){
+		$tab = UtilisateurLien::getAllReunionWithUser($id);
+		foreach ($tab as $valeur) {
+			$reunion = Reunion::getReunionByNum($valeur);
+			echo '<a href="../voir_reunion.php?id=' . $reunion->getNumReunion() . '">', $reunion->getSujet(), '</a>';
+		}
+	}
+	
+	public static function getAllReunionWithUser($num){ 
+			
+		global $bdd;
+		// SELECT ID_REUNION FROM participe WHERE ID_PARTICIPANT=(SELECT ID_PARTICIPANT FROM participant WHERE NOM='LeChat')
+		$u = $bdd -> prepare('SELECT ID_REUNION FROM participe WHERE ID_PARTICIPANT=?;');
+		$u-> execute(array($num));
+		$tuple = $u -> fetchAll();/*tableau*/
+		
+		return $tuple; // ici on renvoie un array au controleur appellant
 	}
 	
 
