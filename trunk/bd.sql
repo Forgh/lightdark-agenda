@@ -109,6 +109,7 @@ CREATE TABLE SALLE
 )  engine=innodb CHARACTER SET UTF8 COLLATE utf8_unicode_ci;
 
 
+
 # -----------------------------------------------------------------------------
 #       TABLE : REUNION
 # -----------------------------------------------------------------------------
@@ -139,7 +140,7 @@ CREATE TABLE PARTICIPE
 (
    ID_REUNION int(6) UNSIGNED NOT NULL  ,
    ID_PARTICIPANT INT(4) UNSIGNED NOT NULL ,
-   ETAT VARCHAR(20) NOT NULL DEFAULT "Participera", -- autre état : "Décommandé", gare aux majuscules
+   ETAT VARCHAR(20) NOT NULL DEFAULT "En attente", -- autre état : "Décommandé", "Participera", gare aux majuscules
    INDEX (ID_REUNION),
    INDEX (ID_PARTICIPANT),
    CONSTRAINT pk_participe PRIMARY KEY (ID_REUNION, ID_PARTICIPANT),
@@ -164,18 +165,18 @@ CREATE TABLE EST_ABSENT
  ) engine=innodb CHARACTER SET UTF8 COLLATE utf8_unicode_ci;
 
 # -----------------------------------------------------------------------------
-#       TABLE : EST_DISPONIBLE
+#       TABLE : EST_INDISPONIBLE
 # -----------------------------------------------------------------------------
  
-CREATE TABLE EST_DISPONIBLE
+CREATE TABLE EST_INDISPONIBLE
  (
    ID_PARTICIPANT INT(4) UNSIGNED NOT NULL ,
    ID_DATE int(4) UNSIGNED NOT NULL ,
    INDEX (ID_PARTICIPANT),
    INDEX (ID_DATE),
-    CONSTRAINT pk_disponible_part PRIMARY KEY (ID_PARTICIPANT,ID_DATE),
-   CONSTRAINT fk_est_disponible_part FOREIGN KEY (ID_PARTICIPANT) REFERENCES PARTICIPANT(ID_PARTICIPANT),
-   CONSTRAINT fk_est_disponible_date FOREIGN KEY (ID_DATE) REFERENCES MOMENT(ID_DATE)
+   CONSTRAINT pk_indisponible_part PRIMARY KEY (ID_PARTICIPANT,ID_DATE),
+   CONSTRAINT fk_est_indisponible_part FOREIGN KEY (ID_PARTICIPANT) REFERENCES PARTICIPANT(ID_PARTICIPANT),
+   CONSTRAINT fk_est_indisponible_date FOREIGN KEY (ID_DATE) REFERENCES MOMENT(ID_DATE)
  ) engine=innodb CHARACTER SET UTF8 COLLATE utf8_unicode_ci;
 
 # -----------------------------------------------------------------------------
@@ -208,6 +209,7 @@ INSERT INTO `MOMENT` (`JOUR`, `TEMPS`) VALUES ("14/12/13", 'matin');
 INSERT INTO `MOMENT` (`JOUR`, `TEMPS`) VALUES ("14/12/13", 'après-midi');
 INSERT INTO `MOMENT` (`JOUR`, `TEMPS`) VALUES ("15/12/13", 'matin');
 INSERT INTO `MOMENT` (`JOUR`, `TEMPS`) VALUES ("15/12/13", 'après-midi');
+
 
 INSERT INTO `REUNION` VALUES (1, 1, 1, 'Commencer cet agenda', 'LaOne', NULL);
 INSERT INTO `REUNION` VALUES (2, 1, 3, 'Continuer cet agenda', 'LaTwo', NULL);
