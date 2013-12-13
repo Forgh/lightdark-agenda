@@ -13,7 +13,7 @@
 				if(isset($_SESSION['prenom'])){
 					echo('<div class="center">Bonjour '.$_SESSION['prenom'].' &nbsp;!</div>');
 					//echo('<a href="espaceperso.php">Espace personnel</a> | ');
-					echo('<a href="logout.php">Se déconnecter</a>');
+					echo('<a href="../controleurs/logout.php">Se déconnecter</a>');
 				}
 				else 
 					echo('<a href="../controleurs/connecter.php">Se connecter</a>');
