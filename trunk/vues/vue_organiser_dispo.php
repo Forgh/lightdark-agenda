@@ -53,7 +53,7 @@
 							<img src="../css/design/blackbox.jpg" alt="indisponibilité" >  
 						</div>
 				
-				</div>
+				</div><br><br><br>
 				
 			<form action="post_indispo.php" method="post" enctype="multipart/form-data">
 			<?php 
