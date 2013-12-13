@@ -21,16 +21,26 @@
 						echo($rapport); ?>
             
             </fieldset>
-            
+             
             
             <table>
             
             <th>Participants</th><th>Décommandés</th>
             <tr>
-            <td><?php if(isset($listePresents)) echo($listePresents); ?></td>
-            <td><?php if(isset($listeAbsents)) echo($listeAbsents); ?></td>
+            <td><?php if(isset($presents)) Utilisateur::afficherListeMembres($presents); ?></td>
+            <td><?php if(isset($absents)) Utilisateur::afficherListeMembres($absents); ?></td>
             </tr>
             </table>
+            
+            <fieldset>
+            <legend>Mon statut</legend>
+            <?php
+			if(isset($etat)) echo('<p>'.$etat.'</p>');
+			if(isset($addRapport)) echo($addRapport);
+			if(isset($cancel)) echo($cancel);
+			if(isset($validate)) echo($validate);
+			?>
+            </fieldset>
 			
 		</div>
 

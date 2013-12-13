@@ -1,6 +1,6 @@
 <?php 
 //connexion à la BD
-include('../include/connect.php');
+require_once('../include/connect.php');
 
 class Rapport{
 	private $titre;

@@ -1,6 +1,6 @@
 <?php 
 //connexion à la BD
-include('../include/connect.php');
+require_once('../include/connect.php');
 
 class Utilisateur{
 	private $id;
@@ -51,8 +51,8 @@ class Utilisateur{
 			
 		global $bdd;
 		$membres = $bdd -> query('SELECT * FROM PARTICIPANT');
-		$tuple = $membres -> fetchAll();/*tableau*/
 		
+		$tuple = $membres -> fetchAll();/*tableau*/
 		return $tuple;
 	}
 	
@@ -65,9 +65,11 @@ class Utilisateur{
 	}
 	
 	public static function afficherListeMembres($liste){/*affiche en liste les membres de la list*/
+
 			echo '<ul class="liste_all_membres">';
 			foreach($liste as $value){
-				echo ('<li>'.$value['PRENOM'].' '.$value['NOM'].'</li>');
+				$user = Utilisateur::getUserById($value);
+				echo ('<li>'.$user->getPrenom().' '.$user->getNom().'</li>');
 			}
 			echo '</ul>';
 	}
@@ -92,11 +94,24 @@ class Utilisateur{
 	}
 	
 	public static function getUserById($id){
+		
 		global $bdd;
 		$u = $bdd -> prepare('SELECT * FROM PARTICIPANT WHERE ID_PARTICIPANT = ?');
-		$u = $bdd -> execute(array($id));
-		$u = $u -> fetchAll();
-		return new Utilisateur($u['ID_PARTICIPANT'], $u['NOM'], $u['PRENOM'], $u['MAIL'], NULL, NULL);
+		$u -> execute(array($id));
+		$tuple = $u -> fetchAll()[0];
+		return new Utilisateur($tuple['ID_PARTICIPANT'], $tuple['NOM'], $tuple['PRENOM'], $tuple['MAIL'], NULL, NULL);
+	}
+	
+	public static function getParticipation($id, $num){/*retourne le statut de participation du membre $id à la réunion $num*/
+		global $bdd;
+		$statut = $bdd -> prepare('SELECT ETAT FROM PARTICIPE WHERE ID_PARTICIPANT = ? AND ID_REUNION = ?');
+		$statut -> execute(array($id, $num));
+		$tuple = $statut -> fetchAll();
+		if(empty($tuple))
+			$etat = "Vous n'êtes pas convié(e) à cette réunion.";
+		else
+			$etat = $tuple[0]['ETAT'];
+		return $etat;
 	}
 
 
