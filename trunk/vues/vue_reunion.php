@@ -13,7 +13,7 @@
 		
 		<div id="bodycentered">
 			
-            <h2>Récapitulatif de réunion</h2>
+            <h2>Récapitulatif de réunion - <?php if(isset($sujet)) echo $sujet; ?> </h2>
             
             <fieldset>
             <legend>Compte-rendu</legend>

@@ -1,7 +1,7 @@
 <?php
-	require('modeles/Equipe.php');
-	require('modeles/Service.php');
-	require('modeles/Utilisateur.php');
+	require('../modeles/Equipe.php');
+	require('../modeles/Service.php');
+	require('../modeles/Utilisateur.php');
 	
 	$services = Service::getAllServices();
 	$liste_all_membres= Utilisateur::getListeMembres();
