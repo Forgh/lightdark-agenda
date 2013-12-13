@@ -21,7 +21,7 @@
 	</fieldset>
 </module_connexion>
 <!--[FIN MODULE DE CONNEXION]-->
-
+</div>
 <div align="center" id="barre_navigation">
 <!--Les whitespace permettent de coller les boutons les uns à la suite des autres-->
 <div class="boutonbegin"><a href="../vues/accueil.php">Accueil</a></div><!-- whitespace

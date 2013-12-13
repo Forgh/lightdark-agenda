@@ -52,6 +52,20 @@ td, th{
 	margin-left: 75px;
 	width:30%;
 }
+/* tests javascript */
+.source, .target { margin: 20px; width: 800px; border: 1px solid green; float:left; }
+.target { border: 1px solid blue; }
+.source { overflow:hidden; height: 100px; }
+.item { height:50px; margin:5px; border:1px solid gray;  float:left; }
+
+.empty { height: 52px; width:52px; margin: 5px; background: #eee; border: 1px dashed #999; float:left; }
+.empty .item { margin: 0; }
+
+
+.highlight { border: 1px solid red; background: #fff; }
+.highlight .item { opacity: 0.3; }
+
+.ui-draggable-dragging { z-index: 99; opacity: 1 !important; }
 
 
 #champ-texte{
