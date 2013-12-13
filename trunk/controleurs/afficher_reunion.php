@@ -121,6 +121,5 @@
 	
 	
 	
-
-	include('../vues/vue_reunion.php');
+	
 ?>
