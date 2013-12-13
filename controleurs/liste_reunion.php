@@ -3,7 +3,7 @@
  
 include('../modeles/Reunion.php');
 
-	$liste = Reunion::afficher_les_reunions('1');
+	$liste = Reunion::afficher_les_reunions($_SESSION['id']);
 	
 	include('../vues/afficher_liste_reunions.php');
 ?>

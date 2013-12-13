@@ -25,8 +25,8 @@
 <div align="center" id="barre_navigation">
 <!--Les whitespace permettent de coller les boutons les uns à la suite des autres-->
 <div class="boutonbegin"><a href="../vues/accueil.php">Accueil</a></div><!-- whitespace
---><div class="bouton"><a href="">Mes disponibilités</a></div><!-- whitespace
---><div class="bouton"><a href="../vues/mes_reunions.php">Mes réunions</a></div><!-- whitespace
+--><div class="bouton"><a href="../controleurs/organiser_dispo.php">Mes disponibilités</a></div><!-- whitespace
+--><div class="bouton"><a href="../controleurs/liste_reunion.php">Mes réunions</a></div><!-- whitespace
 --><div class="boutonend"><a href="../vues/organigramme.php">Voir l'organigramme</a></div><!-- whitespace
 --></div><!--Fin barrenav-->
 
