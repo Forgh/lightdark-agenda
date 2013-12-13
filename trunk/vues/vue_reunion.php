@@ -39,6 +39,7 @@
 			if(isset($addRapport)) echo($addRapport);
 			if(isset($cancel)) echo($cancel);
 			if(isset($validate)) echo($validate);
+			if(isset($delete)) echo($delete);
 			?>
             </fieldset>
 			

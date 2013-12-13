@@ -83,6 +83,20 @@ class Utilisateur{
 		return $tuple;
 	}	
 	
+	public static function correctPassword($id, $mdp){
+		/*Récupère le mot de passe en clair*/
+		global $bdd;
+		$password = $bdd -> prepare ('SELECT PASSWORD FROM PARTICIPANT WHERE ID_PARTICIPANT = ?');
+		$password -> execute (array($id));
+		$tuple = $password -> fetchAll();
+
+		if(!empty($tuple)){
+			$tuple = $tuple[0];
+			return ($mdp==$tuple['PASSWORD']);
+		}
+		else return false;
+	}
+	
 		public function __construct ($id, $nom, $prenom, $mail, $statut, $agenda){
 		$this ->id = $id;
 		$this ->nom = $nom;

@@ -8,26 +8,28 @@
 
 	<body>
   
-		<?php include("../include/header.php"); header("HTTP/1.0 404 Not Found"); ?>
+		<?php include("../include/header.php"); ?>
 		
 		
-		<div id="bodycentered">
+	<div id="bodycentered">
 			
-            		<h2>Connexion</h2>
-            		<form method="post" action="../controleurs/connecter.php">
+       	<h2>Connexion</h2>
+           	
+            <form method="POST" action="../controleurs/connecter.php" enctype="multipart/form-data">
 				<p>
-					<label for="login">Login :</label>
-					<input type="text" id="login" required >
+					<label for="login">Identifiant :</label>
+					<input type="text" id="login" name="login" required />
 				</p>
 				<p>
 					<label for="mdp">Mot de passe :</label>
-					<input type="password" id="mdp" required >
+					<input type="password" id="mdp" name="mdp" required />
 				</p>
 				<p>
-					<input type="submit" value="loguer">
+					<input type="submit" value="Se connecter"/>
 				</p>
-				<?php if(isset($errConnexion)) echo "erreur"; ?>
+				
 			</form>
+            <?php if(isset($errConnexion)) echo('<div class="erreur">'.$errConnexion.'</div>'); ?>
 		</div>
 
 	</body>
