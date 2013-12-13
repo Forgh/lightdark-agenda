@@ -21,7 +21,7 @@
 					break;
 					
 				case 'addRapport':
-					/*[TODO]Insérer ici le truc a faire*/
+					
 					break;
 		}
 	
@@ -72,9 +72,8 @@
 	}
 		
 					
-	$ajouter=	'<form method="get" action="afficher_reunion.php">
-				<input type="hidden" name="action" value="addRapport">
-				<input type="hidden" name="id" value="'.$numReunion.'">
+	$ajouter=	'<form method="post" action="../compte_rendu.php">
+				<input type="hidden" name="reunion" value="'.$numReunion.'">
 				<input type="submit" value="Ajouter un rapport">
 				</form>';
 		
