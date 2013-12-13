@@ -11,7 +11,6 @@
 		die('Erreur : '. $e -> getMessage());
 	}
 	 
-	 
 	 /*
 	//BDD Ovh 
 	try
@@ -34,6 +33,6 @@
 	catch (Exception $e)
 	{
 		die('Erreur : '. $e -> getMessage());
-	}*/
-	
+	}
+	*/
 ?>
