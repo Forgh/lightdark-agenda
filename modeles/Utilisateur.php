@@ -56,12 +56,14 @@ class Utilisateur{
 		return $tuple;
 	}
 	
-	public static function listerMembre($liste){
-		echo '<ul class="liste_all_membres">';
+	public static function listerMembre($liste){/*nouveau: retourne un string ready-to-echo*/
+		$res = '<ul class="liste_all_membres">';
 		foreach($liste as $value){
-			echo'<li><input type="checkbox" class="cat_check" name ="membres[]" value="'.$value['ID_PARTICIPANT'].'"><a> '.$value['PRENOM'].' '.$value['NOM'].'</a></li>';
+			$res.='<li><input type="checkbox" class="cat_check" name ="membres[]" value="'.$value['ID_PARTICIPANT'].'"><a> '.$value['PRENOM'].' '.$value['NOM'].'</a></li>';
 		}
-		echo '</ul>';
+		$res.= '</ul>';
+		
+		return $res;
 	}
 	
 	public static function afficherListeMembres($liste){/*affiche en liste les membres de la list*/

@@ -26,7 +26,7 @@
 		<div id="bodycentered">
 			
             <h1>Ajouter une réunion</h1>
-            <?php include('controleurs/liste_check_membre.php'); ?>
+            <?php include('../vues/liste_check_membre.php'); ?>
             
             
 

@@ -1,5 +1,5 @@
 <?php
-session_start();
+if(!isset($_SESSION['id'])) session_start();
 
 if(!isset($_POST['etape']))
 	header('Location: denied.php');
@@ -39,8 +39,8 @@ $formSalle = '	<form enctype="multipart/form-data" method="post" action="../cont
 				
 $formMembres = '<form enctype="multipart/form-data" method="post" action="../controleurs/nouvelle_reunion.php">
 				<fieldset>
-				<legend>Selection des membres</legend>
-				Insérer ici la liste des particiants
+				<legend>Selection des membres</legend>'.
+				include("../vues/liste_check_membre.php").'
 				<input type="hidden" name="etape" value="final">
 				</fieldset>
 				<input type="submit" value="Suivant">

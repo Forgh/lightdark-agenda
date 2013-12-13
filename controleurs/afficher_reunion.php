@@ -4,8 +4,8 @@
 	
 	session_start();
 	///////////////////////////////////
-	//$_SESSION['id'] = '2'; /*[DEBUG : id du type]*/
-	$_GET['id'] = '1'; /*[DEBUG : n° de la reunion]*////
+	//$_SESSION['id'] = '2'; //[DEBUG : id du type]
+	//$_GET['id'] = '1'; //[DEBUG : n° de la reunion]///
 	////////////////////////////////
 
 	require('../modeles/Utilisateur.php');
