@@ -5,7 +5,7 @@
 </div>
 
 <!--[MODULE DE CONNEXION]-->
-<module_connexion>
+<div id="module_connexion">
 	<fieldset>
     	<legend>Mon compte</legend>
 
@@ -19,13 +19,13 @@
 					echo('<a href="../controleurs/connecter.php">Se connecter</a>');
 			?>
 	</fieldset>
-</module_connexion>
+</div>
 <!--[FIN MODULE DE CONNEXION]-->
 </div>
-<div align="center" id="barre_navigation">
+<div id="barre_navigation">
 <!--Les whitespace permettent de coller les boutons les uns à la suite des autres-->
 <div class="boutonbegin"><a href="../vues/accueil.php">Accueil</a></div><!-- whitespace
---><div class="bouton"><a href="../controleurs/organiser_dispo.php">Mes disponibilités</a></div><!-- whitespace
+--><div class="bouton"><a href="../controleurs/choisir_date.php">Mes disponibilités</a></div><!-- whitespace
 --><div class="bouton"><a href="../controleurs/liste_reunion.php">Mes réunions</a></div><!-- whitespace
 --><div class="boutonend"><a href="../vues/organigramme.php">Voir l'organigramme</a></div><!-- whitespace
 --></div><!--Fin barrenav-->

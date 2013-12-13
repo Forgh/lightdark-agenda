@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -43,8 +42,7 @@
 	</head>	
 	
 	<body>
-		<?php include("../include/header.php"); 
-			?>
+		<?php include("../include/header.php"); ?>
 		
 		<div id="bodycentered">
 				<div class="source">
@@ -56,52 +54,48 @@
 						</div>
 				
 				</div>
-				<?php if(isset($_SESSION['id'])){ ?>
-					<form action="post_indispo.php" method="post" enctype="multipart/form-data">
-					<?php 
-					
-					$date = strtotime($_POST['date']);//  ici ta date
-					
-						?>
-
-					<div class="target">
-							<?php 
-								$i = 0;
-								
-								while($i < 7) {
-							?>
-									<div id="AM[]" class="empty">
-									<input type="hidden" value="<?php echo $date; ?>"> 
+				
+			<form action="post_indispo.php" method="post" enctype="multipart/form-data">
+			<?php 
 			
-									</div>
-							<?php		
-									$i++;
-		$date = strtotime('+1 day', $date);
-								}
-							?>
-						</div>
+			$date = strtotime($_POST['date']);//  ici ta date
+			
+				?>
+
+				<div class="target">
+					<?php 
+						$i = 0;
 						
-						<div class="target">
-							<?php
-					$date = strtotime($_POST['date']);//  ici ta date
+						while($i < 7) {
+					?>
+							<div id="AM[<?php echo $i;?>]" class="empty">
+								<input type="hidden" value="<?php echo $date; ?>"> 
+							</div>
+					<?php		
+							$i++;
+							$date = strtotime('+1 day', $date);
+						}
+					?>
+				</div>
+				
+				<div class="target">
+					<?php
+						$date = strtotime($_POST['date']);//  ici ta date
 
-								$i=0;
-								while($i < 7) {
-							?>		
-									<div id="PM[]" class="empty">
-									<input type="hidden" id="date[]" value="<?php echo $date; ?>"> 
-									</div>
-							<?php
-									$i++;
-		$date = strtotime('+1 day', $date);
-
-								}
-							?>	
-						</div>
-						<input type="submit" value="Valider">
-					</form>
-					
-				<?php } ?>
+						$i=0;
+						while($i < 7) {
+					?>		
+							<div id="PM[<?php echo $i;?>]" class="empty">
+								<input type="hidden" value="<?php echo $date; ?>"> 
+							</div>
+					<?php
+							$i++;
+							$date = strtotime('+1 day', $date);
+						}
+					?>	
+				</div>
+				<input type="submit" value="Valider">
+			</form>
 		</div>
 		
 	</body>
