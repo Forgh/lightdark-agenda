@@ -1,3 +1,8 @@
+<?php
+ 	require('../modeles/Equipe.php');
+	require('../modeles/Service.php');
+	require('../modeles/Utilisateur.php');
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,7 +31,7 @@
 		<div id="bodycentered">
 			
             <h1>Ajouter une réunion</h1>
-            <?php include('../vues/liste_check_membre.php'); ?>
+            <?php include('../controleurs/liste_check_membre.php'); ?>
             
             
 

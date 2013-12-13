@@ -27,9 +27,8 @@
 		<h2>Création de réunion</h2>
     	        
         <?php if(isset($contenu)) echo($contenu);
-				echo($_POST['etape']);
-				echo('<br>'.$date);
-				echo('Salle : '.$salle)?>
+		var_dump($_POST);
+				?>
 
 			
 	</div>
