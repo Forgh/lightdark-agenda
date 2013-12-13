@@ -94,8 +94,9 @@ class Reunion{
 	
 	public static function getReunionByNum($num){
 		global $bdd;
-		$req = $bdd -> prepare('SELECT * FROM REUNION WHERE ID_REUNION = ?');
+		$req = $bdd -> prepare('SELECT * FROM REUNION WHERE ID_REUNION = ?;');
 		$req -> execute(array($num));
+		
 		$tuple = $req -> fetchAll()[0];/*retourne un tableau (une case) du tableau de valeurs -_-'*/
 		
 		return new Reunion($tuple['ID_REUNION'], $tuple['ID_CHEF_REUNION'], $tuple['SUJET'], NULL, NULL, NULL,$tuple['SALLE'], NULL, $tuple['compte_rendu']);
@@ -253,19 +254,22 @@ class Reunion{
 	
 	public static function afficher_les_reunions($id){
 		$tab = Reunion::getAllReunionWithUser($id);
+		$res = '';
+		
 		foreach ($tab as $valeur) {
-			$reunion = Reunion::getReunionByNum($valeur);
-			echo '<a href="../voir_reunion.php?id=' . $reunion->getNumReunion() . '">', $reunion->getSujet(), '</a>';
+			$reunion = Reunion::getReunionByNum($valeur[0]);
+			$res .= '<p><a href="./afficher_reunion.php?id=' . $reunion->getNumReunion() . '">'. $reunion->getSujet(). '</a></p>';
 		}
+		return $res;
 	}
 	
 	public static function getAllReunionWithUser($num){ 
 			
 		global $bdd;
 		// SELECT ID_REUNION FROM participe WHERE ID_PARTICIPANT=(SELECT ID_PARTICIPANT FROM participant WHERE NOM='LeChat')
-		$u = $bdd -> prepare('SELECT ID_REUNION FROM participe WHERE ID_PARTICIPANT=?;');
-		$u = $bdd -> execute(array($num));
-		$tuple = $u -> fetchAll();/*tableau*/
+		$u = $bdd -> prepare('SELECT ID_REUNION FROM participe WHERE ID_PARTICIPANT= ?;');
+		$u -> execute(array($num));
+		$tuple = $u -> fetchAll(PDO::FETCH_COLUMN, 0);/*tableau*/
 		
 		return $tuple; // ici on renvoie un array au controleur appellant
 	}

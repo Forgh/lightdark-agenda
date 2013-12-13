@@ -34,10 +34,10 @@
 			<h1>Editer un compte-rendu</h1>
 
 			<form action="compte_rendu.php" method="post" enctype="multipart/form-data">
-				<textarea name="compte_rendu">
-					<?php include('controleurs/afficher_compte_rendu'); ?>
-				</textarea>
-					<input type="hidden" name="reunion" value="<?php echo $_POST['reunion']; ?>" >
+				<textarea name="compte_rendu"><?php
+				include('controleurs/afficher_compte_rendu'); 
+				?></textarea>
+					<input type="hidden" name="reunion" value="<?php echo $_POST['reunion']; ?>">
 				<p>
 					<input type="submit" value="Valider" >
 				</p>
