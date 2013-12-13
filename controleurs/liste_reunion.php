@@ -1,5 +1,5 @@
-<?php
- session_start();
+
+<?php if(!isset($_SESSION['id'])) session_start(); 
  
 include('../modeles/Reunion.php');
 

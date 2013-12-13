@@ -4,8 +4,8 @@
 	
 	session_start();
 	///////////////////////////////////
-	$_SESSION['id'] = '2'; /*[DEBUG]*/
-	$_GET['id'] = '1'; /*[DEBUG]*////
+	//$_SESSION['id'] = '2'; /*[DEBUG]*/
+	//$_GET['id'] = '1'; /*[DEBUG]*////
 	////////////////////////////////
 	require('../modeles/Utilisateur.php');
 	require('../modeles/Reunion.php');
