@@ -1,13 +1,24 @@
 <?php
-if(!isset($_SESSION['id'])) session_start();
+	if(!isset($_SESSION['id'])) session_start();
+	
+ 	require('../modeles/Equipe.php');
+	require('../modeles/Service.php');
+	require('../modeles/Utilisateur.php');
+	require('../controleurs/liste_check_membre.php');//fournit $checklist
+
+
 
 if(!isset($_POST['etape']))
-	header('Location: denied.php');
+	var_dump($_POST);
+	//header('Location: denied.php');
 else
 	$etape = $_POST['etape'];//{date, salle, membres, final}
 
 if(isset($_POST['date']))
 	$date = $_POST['date'];
+	
+if(isset($_POST['date']))
+	$plage = $_POST['plage'];
  
 if(isset($_POST['salle']))
 	$salle = $_POST['salle'];
@@ -22,7 +33,9 @@ $formDate = '	<form enctype="multipart/form-data" method="post" action="../contr
 				<fieldset>
 				<legend>Selection de la date</legend>
 				<label for="date">Date :</label>
-				<input required="required" type="date" name="date" placeholder="JJ/MM/AAAA">
+				<input required="required" type="date" name="date" placeholder="JJ/MM/AAAA"> </br>
+				<input type="radio" name="plage" value="AM" checked="checked"> Matin </br>
+				<input type="radio" name="plage" value="PM"> Après-midi
 				<input type="hidden" name="etape" value="salle">
 				</fieldset>
 				<input type="submit" value="Suivant">
@@ -39,11 +52,11 @@ $formSalle = '	<form enctype="multipart/form-data" method="post" action="../cont
 				
 $formMembres = '<form enctype="multipart/form-data" method="post" action="../controleurs/nouvelle_reunion.php">
 				<fieldset>
-				<legend>Selection des membres</legend>'.
-				include("../vues/liste_check_membre.php").'
+				<legend>Selection des membres</legend>
+				'.$checklist.'
 				<input type="hidden" name="etape" value="final">
 				</fieldset>
-				<input type="submit" value="Suivant">
+				<input type="submit" value="Créer la réunion">
 				</form>';
 
 
@@ -70,46 +83,10 @@ switch ($etape){
 	case 'final':
 		/*instruction d'entrée dans la base*/
 		include('../controleurs/liste_reunion.php');
+		//foreach $_POST['membres']
 		break;
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-/*
-	$listID=$_POST[""];
-	$sal = $_POST[""];
-	$jou = $_POST[""];
-	$mom = $_POST[""];
-	$num; //?
-	$chef = Utilisateur::getParNom($_POST[""]); //retourne null si inexistant
-	$sujet= $_POST[""];
-	$statut=$_POST[""];
-	
-	
-	
-
-	if (Salle::estDispo($jou, $mom) and $chef != null){
-		$reunion = new Reunion($num, $chef, $sujet, $listID, $moment, $statut, "");
-		foreach($listID as $liste){
-			$u = Utilisateur::getUserById($liste);
-			mail_nouvelle_reunion($u->getNom(), $u->getMail());
-		}
-		
-
-	}else{
-		//la salles n'est pas libre
-	}
-	
-	*/
 	
 	
 	
