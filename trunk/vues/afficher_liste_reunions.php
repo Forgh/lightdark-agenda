@@ -17,7 +17,14 @@
 
 			<?php //on a déjà l'id de l'utilisateur
 				if(isset($liste)) echo $liste;
+				else echo('<em>Vous n\'avez pas de réunions de prévues</em>');
 			?>
+            
+            <form method="post" enctype="multipart/form-data" action="../controleurs/nouvelle_reunion.php">
+            <input type="hidden" name="etape" value="date">
+            <input type="submit" value="Créer une réunion">
+            
+            </form>
 			
 		</div>
 		
