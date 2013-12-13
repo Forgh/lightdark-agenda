@@ -1,6 +1,6 @@
 <?php 
 //connexion à la BD
-include('../include/connect.php');
+require_once('../include/connect.php');
 
 class Reunion{
 	private $numReunion;
@@ -49,6 +49,11 @@ class Reunion{
 	public function getCompteRendu() {
 		return $this->compteRendu; 
 	}
+	
+	public function estPassee(){//[TODO] : implémenter avec une vraie vérification
+	/*Renvoie faux si la réunion à lieu ce jour ou plus tard, vrai sinon*/
+		return false;	
+	}
 	/***********  Fin Getters  ***********/
 	
 
@@ -72,6 +77,8 @@ class Reunion{
 	public function setPlage($cr) {
 		$this->plage=$cr;
 	}
+	
+	
 	/********** Fin Setters ***************/
 	
 	public static function ajouter_reunion($sujet, $salle, $createur, $idDate){
@@ -87,11 +94,11 @@ class Reunion{
 	
 	public static function getReunionByNum($num){
 		global $bdd;
-		$reunion = $bdd->prepare('SELECT * FROM REUNION WHERE ID_REUNION = ?');
-		$reunion = $bdd->execute(array($num));
-		$tuple = $reunion -> fetchAll();
-			
-		return new Reunion($tuple['ID_REUNION'], $tuple['ID_CHEF_REUNION'], $tuple['SUJET'], NULL, NULL, NULL,$tuple['SALLE'], NULL, NULL);
+		$req = $bdd -> prepare('SELECT * FROM REUNION WHERE ID_REUNION = ?');
+		$req -> execute(array($num));
+		$tuple = $req -> fetchAll()[0];/*retourne un tableau (une case) du tableau de valeurs -_-'*/
+		
+		return new Reunion($tuple['ID_REUNION'], $tuple['ID_CHEF_REUNION'], $tuple['SUJET'], NULL, NULL, NULL,$tuple['SALLE'], NULL, $tuple['compte_rendu']);
 	}
 	
 	public static function update($new) {
@@ -121,28 +128,39 @@ class Reunion{
 	public static function getListePresents($num){
 		/*Retourne la liste des Id des membres décommandés de la réunion*/
 		global $bdd;
-		$membres = $bdd -> prepare('SELECT ID_PARTICIPANT FROM REUNION WHERE ID_REUNION = ? AND ETAT = ?');
-		$membres = $bdd -> execute(array($num, 'Participera'));
-		$tuple = $membres -> fetchAll();/*tableau*/
-		
+		$membres = $bdd -> prepare('SELECT ID_PARTICIPANT FROM PARTICIPE WHERE ID_REUNION = ? AND ETAT = ?');
+		$membres -> execute(array($num,'Participera'));
+		$tuple = $membres -> fetchAll(PDO::FETCH_COLUMN, 0);/*tableau*/
 		return $tuple;
 	}
+	
 	
 	public static function getListeAbsents($num){
 		/*Retourne la liste des Id des membres décommandés de la réunion*/
 		global $bdd;
-		$membres = $bdd -> prepare('SELECT ID_PARTICIPANT FROM REUNION WHERE ID_REUNION = ? AND ETAT = ?');
-		$membres = $bdd -> execute(array($num, 'Décommandé'));
-		$tuple = $membres -> fetchAll();/*tableau*/
-		
+		$membres = $bdd -> prepare('SELECT ID_PARTICIPANT FROM PARTICIPE WHERE ID_REUNION = ? AND ETAT = ?');
+		$membres -> execute(array($num,'Décommandé'));
+		$tuple = $membres -> fetchAll(PDO::FETCH_COLUMN, 0);/*tableau*/
 		return $tuple;
+	}
+	
+	public static function setPresent($id, $num){/*passe le participant à 'participera'*/
+		global $bdd;
+		$participera = $bdd -> prepare('UPDATE PARTICIPE SET ETAT = "Participera" WHERE ID_PARTICIPANT = ? AND ID_REUNION = ?');
+		$participera -> execute (array($id, $num));
+	}
+	
+	public static function setAbsent($id, $num){/*passe le participant à 'décommandé'*/
+		global $bdd;
+		$decommander = $bdd -> prepare('UPDATE PARTICIPE SET ETAT = "Décommandé" WHERE ID_PARTICIPANT = ? AND ID_REUNION = ?');
+		$decommander -> execute (array($id, $num));
 	}
 	
 	
 	public static function supprimerReunion($num){
 		global $bdd;
 		$suppression = $bdd -> prepare('DELETE FROM REUNION WHERE ID_REUNION = ?');
-		$suppression = $bdd -> execute(array($num));
+		$suppression -> execute(array($num));
 	}
 	
 	
@@ -162,9 +180,10 @@ class Reunion{
 	public static function estChef($numReunion, $idParticipant){
 		/*Retourne vrai si l'id donné est celui du propriétaire de la réunion, faux sinon*/
 	global $bdd;
-	$chef = $bdd -> prepare('SELECT ID_CHEF_REUNION FROM REUNION WHERE ID_CHEF_REUNION = ?');
-	$chef = $bdd -> execute(array($numReunion));
-	$tuple = $chef -> fetchAll();
+	$chef = $bdd -> prepare('SELECT ID_CHEF_REUNION FROM REUNION WHERE ID_REUNION = ?');
+	$chef -> execute(array($numReunion));
+	$tuple = $chef -> fetchAll()[0];
+	
 	return ($idParticipant == $tuple['ID_CHEF_REUNION']);
 		}
 		
@@ -172,7 +191,7 @@ class Reunion{
 
 	
 	
-	public function __construct ($num, $chef, $sujet, $listeParticipants, $plage, $statut, $compteRendu) {
+	public function __construct ($num, $chef, $sujet, $listeParticipants, $listeAbsents, $plage, $statut, $salle, $compteRendu) {
 		$this->numReunion = $num;
 		$this->chefReunion = $chef;
 		$this->sujet = $sujet;
@@ -233,7 +252,7 @@ class Reunion{
 	}
 	
 	public static function afficher_les_reunions($id){
-		$tab = UtilisateurLien::getAllReunionWithUser($id);
+		$tab = Reunion::getAllReunionWithUser($id);
 		foreach ($tab as $valeur) {
 			$reunion = Reunion::getReunionByNum($valeur);
 			echo '<a href="../voir_reunion.php?id=' . $reunion->getNumReunion() . '">', $reunion->getSujet(), '</a>';
@@ -245,7 +264,7 @@ class Reunion{
 		global $bdd;
 		// SELECT ID_REUNION FROM participe WHERE ID_PARTICIPANT=(SELECT ID_PARTICIPANT FROM participant WHERE NOM='LeChat')
 		$u = $bdd -> prepare('SELECT ID_REUNION FROM participe WHERE ID_PARTICIPANT=?;');
-		$u-> execute(array($num));
+		$u = $bdd -> execute(array($num));
 		$tuple = $u -> fetchAll();/*tableau*/
 		
 		return $tuple; // ici on renvoie un array au controleur appellant

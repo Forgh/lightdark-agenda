@@ -10,12 +10,12 @@ session_start();
 include ('../modeles/Reunion.php'); //connait le modèle de Réunion et ses méthodes
 
 if(!isset($_GET['num']))
-	header("Location : ../vues/denied.php"); //[TODO] Créer denied.php "Vous devez vous enregistrer, accès refusé"
+	header("Location : ../vues/denied.php");
 else $reunion = Reunion::getReunionByNum($_GET['num']);
 
 
 
-if( Reunion::countParticipants()!==0)//on vérifie que la réunion existe ( au moins un mec dedant : le créateur)
+if( Reunion::countParticipants()!==0)//on vérifie que la réunion existe ( au moins un mec dedan : le créateur)
 	$tableau = Reunion::tableauparticipants();//Si elle existe, lister les participants
 else
 	$tableau = "Il n'y a actuellement aucun participant à cette réunion";
