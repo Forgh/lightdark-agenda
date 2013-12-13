@@ -41,6 +41,8 @@
 			if(isset($cancel)) echo($cancel);
 			if(isset($validate)) echo($validate);
 			if(isset($delete)) echo($delete);
+			
+			var_dump(Reunion::estChef($numReunion, $_SESSION['id']), $numReunion, $_SESSION['id']);
 			?>
             </fieldset>
 			
