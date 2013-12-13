@@ -424,9 +424,8 @@ div.bouton.header_out:active{
 	position: fixed;
 	left:33%;
 	top:110px;/*en bas du header*/
-
 	z-index:1;
-	
+	vertical-align:middle;
 }
 
 
