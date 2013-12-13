@@ -10,13 +10,13 @@
     	<legend>Mon compte</legend>
 
 			<?php
-				if(isset($_SESSION['prenom'])){/*[TODO] A adapter si besoin aux variables du site agenda*/
+				if(isset($_SESSION['prenom'])){
 					echo('<div class="center">Bonjour '.$_SESSION['prenom'].' &nbsp;!</div>');
-					echo('<a href="espaceperso.php">Espace personnel</a> | ');
+					//echo('<a href="espaceperso.php">Espace personnel</a> | ');
 					echo('<a href="logout.php">Se déconnecter</a>');
 				}
 				else 
-					echo('<a href="connecter.php">Se connecter</a>');
+					echo('<a href="../controleurs/connecter.php">Se connecter</a>');
 			?>
 	</fieldset>
 </module_connexion>
@@ -24,10 +24,10 @@
 
 <div align="center" id="barre_navigation">
 <!--Les whitespace permettent de coller les boutons les uns à la suite des autres-->
-<div class="boutonbegin"><a href="accueil.php">Accueil</a></div><!-- whitespace
---><div class="bouton"><a href="ctrlproduits.php">Mes disponibilités</a></div><!-- whitespace
---><div class="bouton"><a href="mes_reunions.php">Mes réunions</a></div><!-- whitespace
---><div class="boutonend"><a href="organigramme.php">Voir l'organigramme</a></div><!-- whitespace
+<div class="boutonbegin"><a href="../vues/accueil.php">Accueil</a></div><!-- whitespace
+--><div class="bouton"><a href="">Mes disponibilités</a></div><!-- whitespace
+--><div class="bouton"><a href="../vues/mes_reunions.php">Mes réunions</a></div><!-- whitespace
+--><div class="boutonend"><a href="../vues/organigramme.php">Voir l'organigramme</a></div><!-- whitespace
 --></div><!--Fin barrenav-->
 
 </div><!--Fin header-->
