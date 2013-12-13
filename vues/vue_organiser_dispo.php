@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -55,49 +56,52 @@
 						</div>
 				
 				</div>
-			<form action="post_indispo.php" method="post" enctype="multipart/form-data">
-			<?php 
-			
-			$date = strtotime($_POST['date']);//  ici ta date
-			
-				?>
-
-			<div class="target">
+				<?php if(isset($_SESSION['id'])){ ?>
+					<form action="post_indispo.php" method="post" enctype="multipart/form-data">
 					<?php 
-						$i = 0;
+					
+					$date = strtotime($_POST['date']);//  ici ta date
+					
+						?>
+
+					<div class="target">
+							<?php 
+								$i = 0;
+								
+								while($i < 7) {
+							?>
+									<div id="AM[]" class="empty">
+									<input type="hidden" value="<?php echo $date; ?>"> 
+			
+									</div>
+							<?php		
+									$i++;
+		$date = strtotime('+1 day', $date);
+								}
+							?>
+						</div>
 						
-						while($i < 7) {
-					?>
-							<div id="AM[]" class="empty">
-							<input type="hidden" value="<?php echo $date; ?>"> 
-	
-							</div>
-					<?php		
-							$i++;
-$date = strtotime('+1 day', $date);
-						}
-					?>
-				</div>
-				
-				<div class="target">
-					<?php
-			$date = strtotime($_POST['date']);//  ici ta date
+						<div class="target">
+							<?php
+					$date = strtotime($_POST['date']);//  ici ta date
 
-						$i=0;
-						while($i < 7) {
-					?>		
-							<div id="PM[]" class="empty">
-							<input type="hidden" id="date[]" value="<?php echo $date; ?>"> 
-							</div>
-					<?php
-							$i++;
-$date = strtotime('+1 day', $date);
+								$i=0;
+								while($i < 7) {
+							?>		
+									<div id="PM[]" class="empty">
+									<input type="hidden" id="date[]" value="<?php echo $date; ?>"> 
+									</div>
+							<?php
+									$i++;
+		$date = strtotime('+1 day', $date);
 
-						}
-					?>	
-				</div>
-				<input type="submit" value="Valider">
-			</form>
+								}
+							?>	
+						</div>
+						<input type="submit" value="Valider">
+					</form>
+					
+				<?php } ?>
 		</div>
 		
 	</body>
