@@ -19,10 +19,7 @@
 				case 'validate':
 					Reunion::setPresent($_SESSION['id'], $_GET['id']);
 					break;
-					
-				case 'addRapport':
-					
-					break;
+				
 		}
 	
 	
@@ -65,10 +62,13 @@
 					<input type="submit" value="Confirmer">
 					</form>';
 					
+					/*variable contenant le formulaire vers suppr reunion*/
+					
 	}
 	else{
 		$confirmer = NULL;
 		$annuler = NULL;
+		$supprimer = NULL;
 	}
 		
 					
@@ -80,6 +80,10 @@
 		/*Si connecté, pas de rapport déclaré et est le chef de la réunion alors dépot de rapport possible*/		
 	if(isset($_SESSION['id']) && ($rapport =='<em>Aucun compte-rendu n\'a été déposé</em>') && Reunion::estChef($numReunion, $_SESSION['id']))
 		$addRapport = $ajouter;
+		
+		/*si chef -> $delete = $supprimer*/
+		
+		
 					
 	
 	
