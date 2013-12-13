@@ -82,7 +82,7 @@
 	$supprimer = NULL; // si suppr possible alors il ne sera pas null
 
 		/*Si connecté, pas de rapport déclaré et est le chef de la réunion alors dépot de rapport possible*/		
-	if(isset($_SESSION['id']) && ($rapport =='<em>Aucun compte-rendu n\'a été déposé</em>') && Reunion::estChef($numReunion, $_SESSION['id']))
+	if(isset($_SESSION['id']) && ($rapport =='<em>Aucun compte-rendu n\'a été déposé</em>') && Reunion::estChef($numReunion, $_SESSION['id'])){
 		$addRapport = $ajouter;
 		
 		/*si chef -> $delete = $supprimer*/
@@ -92,13 +92,13 @@
 					<input type="submit" value="Supprimer">
 					</form>';
 		
-					
+	}				
 	
 	
+	$delete = $supprimer;
 	switch ($statut){
 		case 'En attente':
 			$etat = 'Veuillez confirmer votre présence ou votre absence à cette réunion.';
-			$cancel = $annuler;
 			$validate = $confirmer;
 			break;
 			
