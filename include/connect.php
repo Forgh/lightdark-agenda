@@ -1,6 +1,6 @@
 <?php 
 	//bdd local sous Wamp
-	/*
+	
 	try
 	{
 		$bdd = new PDO('mysql:host=localhost;dbname=projetslagenda','root','');
@@ -10,6 +10,7 @@
 	{
 		die('Erreur : '. $e -> getMessage());
 	}
+	 
 	 
 	 /*
 	//BDD Ovh 
@@ -24,7 +25,7 @@
 	}*/
 	
 	// BdD JJ
-	
+	/*
 	try
 	{
 		$bdd = new PDO('mysql:host=localhost;dbname=agenda','root','');
@@ -33,6 +34,6 @@
 	catch (Exception $e)
 	{
 		die('Erreur : '. $e -> getMessage());
-	}
+	}*/
 	
 ?>
