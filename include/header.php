@@ -1,7 +1,7 @@
 <div id="header">
 <div id="connexion">
 <div id="logo">
-<a  href="index.php"><img src="images/logo.png" alt="Logo Agenda"/></a>
+<a  href="../index.php"><img src="../images/logo.png" alt="Logo Agenda"/></a>
 </div>
 
 <!--[MODULE DE CONNEXION]-->
@@ -24,10 +24,10 @@
 
 <div align="center" id="barre_navigation">
 <!--Les whitespace permettent de coller les boutons les uns à la suite des autres-->
-<div class="boutonbegin"><a href="index.php">Accueil</a></div><!-- whitespace
+<div class="boutonbegin"><a href="accueil.php">Accueil</a></div><!-- whitespace
 --><div class="bouton"><a href="ctrlproduits.php">Mes disponibilités</a></div><!-- whitespace
 --><div class="bouton"><a href="mes_reunions.php">Mes réunions</a></div><!-- whitespace
---><div class="boutonend"><a href="contact.php">Voir l'organigramme</a></div><!-- whitespace
+--><div class="boutonend"><a href="organigramme.php">Voir l'organigramme</a></div><!-- whitespace
 --></div><!--Fin barrenav-->
 
 </div><!--Fin header-->
