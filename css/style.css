@@ -52,8 +52,8 @@ td, th{
 	margin-left: 75px;
 	width:30%;
 }
-/* tests javascript */
 
+/* CSS pour organiser_dispo (javascript) */
 .target { margin: 20px; width: 95%; height: 120px; float:left;  }
 .source {display:bloc-inline;width : 95%;}
 .source  img { height: 100px; width:12%; display:bloc-inline;}
@@ -71,6 +71,21 @@ td, th{
 	text-align:center;
 }
 
+/* Fin CSS pour organiser_dispo (javascript) */
+
+#agenda {
+	width:95%;
+	margin : 10px auto auto auto; 
+}
+ 
+#agenda td {
+	padding : 5px;
+}
+
+#agenda, #agenda th, #agenda td{
+border: 5px ridge lightblue;
+}	
+	
 #champ-texte{
 	width:60%;
 }
