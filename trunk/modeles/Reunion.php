@@ -79,54 +79,17 @@ class Reunion{
 	}
 	
 	
-	public static function setPresent($id, $num){/*passe le participant à 'participera'*/
-		global $bdd;
-		$participera = $bdd -> prepare('UPDATE PARTICIPE SET ETAT = "Participera" WHERE ID_PARTICIPANT = ? AND ID_REUNION = ?');
-		$participera -> execute (array($id, $num));
-	}
-	
-	public static function setAbsent($id, $num){/*passe le participant à 'décommandé'*/
-		global $bdd;
-		$decommander = $bdd -> prepare('UPDATE PARTICIPE SET ETAT = "Décommandé" WHERE ID_PARTICIPANT = ? AND ID_REUNION = ?');
-		$decommander -> execute (array($id, $num));
-	}
-	
 	/********** Fin Setters ***************/
-	
-	
-	public static function listerSallesDispo($jour, $plage){
-		
-		/*Prend une date au format JJ/MM/AAAA puis la convertie*/
-		global $bdd;
-		$r = $bdd -> prepare('	SELECT REUNION.`SALLE` FROM REUNION WHERE REUNION.`SALLE` NOT IN(
-
-									SELECT REUNION.`SALLE`
-									FROM REUNION, MOMENT
-									WHERE (REUNION.`ID_DATE`=MOMENT.`ID_DATE` 
-     									AND MOMENT.`JOUR`= :jour
-    									AND MOMENT.`TEMPS`= :plage));'
-		
-		);
-		$r -> execute(array(
-				'jour' => $jour,
-				'plage' => $plage
-			));	
-	}
 	
 	public static function ajouter_reunion($sujet, $salle, $createur, $idDate){
 		global $bdd;
 		$new = $bdd -> prepare ('INSERT INTO REUNION (ID_CHEF_REUNION, ID_DATE, SUJET, SALLE) VALUES (:chef, :Date, :sujet, :salle)');
-		$new -> execute(array(
+		$new = $bdd -> execute(array(
 			'chef' => $createur,
 			'Date' => $idDate,
 			'sujet' => $sujet,
 			'salle' => $salle
 		));
-		
-		$id = $bdd->prepare('SELECT ID_REUNION FROM REUNION WHERE ID_DATE = ? AND SALLE = ?');
-		$id -> execute(array($idDate, $salle));
-		$tuple = $id->fetchAll()[0];
-		return $tuple[0];
 	}
 	
 	public static function getReunionByNum($num){
@@ -182,7 +145,17 @@ class Reunion{
 		return $tuple;
 	}
 	
-
+	public static function setPresent($id, $num){/*passe le participant à 'participera'*/
+		global $bdd;
+		$participera = $bdd -> prepare('UPDATE PARTICIPE SET ETAT = "Participera" WHERE ID_PARTICIPANT = ? AND ID_REUNION = ?');
+		$participera -> execute (array($id, $num));
+	}
+	
+	public static function setAbsent($id, $num){/*passe le participant à 'décommandé'*/
+		global $bdd;
+		$decommander = $bdd -> prepare('UPDATE PARTICIPE SET ETAT = "Décommandé" WHERE ID_PARTICIPANT = ? AND ID_REUNION = ?');
+		$decommander -> execute (array($id, $num));
+	}
 	
 	
 	public static function supprimerReunion($num){
@@ -194,11 +167,16 @@ class Reunion{
 	
 	public static function ajouterParticipant($numReunion, $idParticipant){
 		global $bdd;
-		$ajout = $bdd -> prepare('INSERT INTO PARTICIPE (ID_REUNION, ID_PARTICIPANT) VALUES (?, ?);');
+		$ajout = $bdd -> prepare('INSERT INTO PARTICIPE VALUES (?, ?)');
 		$ajout = $bdd -> execute(array($numReunion, $idParticipant));
 		}
 	
-	
+	public static function retirerParticipant($numReunion, $idParticipant){
+		/*utile si on considère qu'un décommandé est marqué comme tel mais toujours présent dans PARTICIPE ?*/
+		global $bdd;
+		$suppression = $bdd -> prepare('DELETE FROM PARTICIPE WHERE ID_PARTICIPANT = ? AND ID_REUNION = ?');
+		$suppression = $bdd -> execute(array($numReunion, $idParticipant));
+		}
 	
 	public static function estChef($numReunion, $idParticipant){
 		/*Retourne vrai si l'id donné est celui du propriétaire de la réunion, faux sinon*/
@@ -211,7 +189,7 @@ class Reunion{
 		}
 		
 		
-	
+
 	
 	
 	public function __construct ($num, $chef, $sujet, $listeParticipants, $listeAbsents, $plage, $statut, $salle, $compteRendu) {
@@ -296,6 +274,17 @@ class Reunion{
 		return $tuple; // ici on renvoie un array au controleur appellant
 	}
 	
+	public static function trouverReunion($id, $date, $plage){
+
+		$r = $bdd -> prepare('SELECT * FROM REUNION, PARTICIPE, MOMENT WHERE MOMENT.JOUR = :date AND MOMENT.TEMPS=:plage AND PARTICIPE.ID_PARTICIPANT=: participant AND MOMENT.ID_DATE = REUNION.ID_DATE AND REUNION.ID_REUNION = PARTICIPE.ID_REUNION' );
+        $r -> execute(array(
+							'date' => $date,
+							'plage' => $plage,
+							'participant' => $id
+						));
+		$tuple = $r -> fetchAll(PDO::FETCH_COLUMN, 0);
+		return new Reunion($tuple['ID_REUNION'], $tuple['ID_CHEF_REUNION'], $tuple['SUJET'], NULL, $plage, NULL,$tuple['SALLE'], $tuple['compte_rendu']);
+	}
 
 }//end class
 
