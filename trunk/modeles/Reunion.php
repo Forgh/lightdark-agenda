@@ -82,6 +82,7 @@ class Reunion{
 	/********** Fin Setters ***************/
 	
 	public static function ajouter_reunion($sujet, $salle, $createur, $idDate){
+		
 		global $bdd;
 		$new = $bdd -> prepare ('INSERT INTO REUNION (ID_CHEF_REUNION, ID_DATE, SUJET, SALLE) VALUES (:chef, :Date, :sujet, :salle)');
 		$new -> execute(array(
@@ -90,6 +91,13 @@ class Reunion{
 			'sujet' => $sujet,
 			'salle' => $salle
 		));
+		
+		$id = $bdd ->prepare('SELECT * FROM REUNION WHERE SALLE = ? AND ID_DATE = ? ');
+		$id -> execute(array($salle, $idDate));
+		$tuple = $id -> fetchAll();
+		
+		$tuple = $tuple[0]['ID_REUNION'];
+		return $tuple;
 	}
 	
 	public static function getReunionByNum($num){
@@ -170,7 +178,7 @@ class Reunion{
 	
 	public static function ajouterParticipant($numReunion, $idParticipant){
 		global $bdd;
-		$ajout = $bdd -> prepare('INSERT INTO PARTICIPE VALUES (?, ?)');
+		$ajout = $bdd -> prepare('INSERT INTO PARTICIPE (ID_REUNION, ID_PARTICIPANT) VALUES (?, ?);');
 		$ajout -> execute(array($numReunion, $idParticipant));
 		}
 	
