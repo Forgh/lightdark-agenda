@@ -84,7 +84,7 @@ class Reunion{
 	public static function ajouter_reunion($sujet, $salle, $createur, $idDate){
 		global $bdd;
 		$new = $bdd -> prepare ('INSERT INTO REUNION (ID_CHEF_REUNION, ID_DATE, SUJET, SALLE) VALUES (:chef, :Date, :sujet, :salle)');
-		$new = $bdd -> execute(array(
+		$new -> execute(array(
 			'chef' => $createur,
 			'Date' => $idDate,
 			'sujet' => $sujet,
@@ -168,14 +168,14 @@ class Reunion{
 	public static function ajouterParticipant($numReunion, $idParticipant){
 		global $bdd;
 		$ajout = $bdd -> prepare('INSERT INTO PARTICIPE VALUES (?, ?)');
-		$ajout = $bdd -> execute(array($numReunion, $idParticipant));
+		$ajout -> execute(array($numReunion, $idParticipant));
 		}
 	
 	public static function retirerParticipant($numReunion, $idParticipant){
 		/*utile si on considère qu'un décommandé est marqué comme tel mais toujours présent dans PARTICIPE ?*/
 		global $bdd;
 		$suppression = $bdd -> prepare('DELETE FROM PARTICIPE WHERE ID_PARTICIPANT = ? AND ID_REUNION = ?');
-		$suppression = $bdd -> execute(array($numReunion, $idParticipant));
+		$suppression -> execute(array($numReunion, $idParticipant));
 		}
 	
 	public static function estChef($numReunion, $idParticipant){
