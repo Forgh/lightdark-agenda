@@ -51,20 +51,26 @@
 	
 	
 	if(!$reunion->estPassee()){
-	$annuler = '<form method="get" action="afficher_reunion.php">
-				<input type="hidden" name="action" value="cancel">
-				<input type="hidden" name="id" value="'.$numReunion.'">
-				<input type="submit" value="Décommander">
-				</form>';
-				
+	
+	
 	$confirmer = 	'<form method="get" action="afficher_reunion.php">
 					<input type="hidden" name="action" value="validate">
 					<input type="hidden" name="id" value="'.$numReunion.'">
 					<input type="submit" value="Confirmer">
 					</form>';
 					
+					
+					
+	$annuler = '<form method="get" action="afficher_reunion.php">
+				<input type="hidden" name="action" value="cancel">
+				<input type="hidden" name="id" value="'.$numReunion.'">
+				<input type="submit" value="Décommander">
+				</form>';
+				
+	
+					
 		
-				/*variable contenant le formulaire vers suppr reunion*/
+				/*variable contenant le formulaire vers suppr_reunion*/
 						
 		
 	}
@@ -85,11 +91,10 @@
 	if(isset($_SESSION['id']) && ($rapport =='<em>Aucun compte-rendu n\'a été déposé</em>') && Reunion::estChef($numReunion, $_SESSION['id'])){
 		$addRapport = $ajouter;
 		
-		/*si chef -> $delete = $supprimer*/ 
-		//A METTRE EN POST !!!!!!!!!!!!
-			$supprimer = '<form method="get" action="supprimer_reunion.php">
+		/*si chef -> $delete = $supprimer*/
+			$supprimer = '<form method="get" action="afficher_reunion.php">
 					<input type="hidden" name="action" value="supprimer">
-					<input type="hidden" name="num" value="'.$numReunion.'">
+					<input type="hidden" name="id" value="'.$numReunion.'">
 					<input type="submit" value="Supprimer">
 					</form>';
 		
@@ -122,5 +127,6 @@
 	
 	
 	
-	
+
+	include('../vues/vue_reunion.php');
 ?>
