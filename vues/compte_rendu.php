@@ -3,8 +3,8 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="css/style.css" >
-		<script type="text/javascript" src="tinymce/tinymce.min.js"></script>
+		<link rel="stylesheet" href="../css/style.css" >
+		<script type="text/javascript" src="../tinymce/tinymce.min.js"></script>
 		<script type="text/javascript">
 			tinymce.init({
 				selector: "textarea",
@@ -29,13 +29,14 @@
 	</head>
 	
 	<body>
-		<?php include("include/header.php"); ?>
+		<?php include("../include/header.php"); ?>
 		<div id="bodycentered" >
 			<h1>Editer un compte-rendu</h1>
 
 			<form action="compte_rendu.php" method="post" enctype="multipart/form-data">
 				<textarea name="compte_rendu"><?php
-				include('controleurs/afficher_compte_rendu'); 
+					echo $affichage_texte;
+
 				?></textarea>
 					<input type="hidden" name="reunion" value="<?php echo $_POST['reunion']; ?>">
 				<p>
