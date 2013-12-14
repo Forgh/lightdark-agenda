@@ -3,7 +3,7 @@
 	<head>
 		<link rel="stylesheet" href="../css/style.css" content="html/css">
 		<META charset="utf-8"> 
-		<title> Afficher une réunion </title>
+		<title> Afficher une rÃ©union </title>
 	</head>
 
 	<body>

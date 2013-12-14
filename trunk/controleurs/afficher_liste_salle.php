@@ -10,5 +10,5 @@
 		$res .= '<p><input type="radio" name="salle" value="' . $s->getNomSalle() . '">'.$s->getNomSalle().'</p>';
 	}
 	$res .= '<input type="submit" value="Valider"></form>';
-	
+	include('../vues/afficher_salles.php');
 ?>
