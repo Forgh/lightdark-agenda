@@ -2,7 +2,7 @@
 	if(!isset($_SESSION['id'])) {
 		session_start();
 		include('../modeles/Reunion.php');
-		
+		include('../modeles/Utilisateur.php');
 		$today = date("d-m-Y");
 
 		for ($i=0;$i<7;$i++) {
