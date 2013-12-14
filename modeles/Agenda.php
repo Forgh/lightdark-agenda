@@ -45,7 +45,7 @@ class Agenda{//un agenda affecté à une personne ou une salle
 								'TEMPS' => $temps
 								));
 			$tuple = $moment -> fetchAll(PDO::FETCH_COLUMN, 0);
-			return Agenda::AjouteSiNecessaire($date, $temps);
+			return Agenda::AjouteMomentSiNecessaire($date, $temps);
 		}else{
 			return $tuple[0];
 		}
