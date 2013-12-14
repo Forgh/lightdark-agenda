@@ -1,6 +1,6 @@
-<?php
-	if(!isset($_SESSION['id'])) {
-		session_start();
+<?php session_start();
+	if(isset($_SESSION['id'])) {
+		
 		include('../modeles/Reunion.php');
 		include('../modeles/Utilisateur.php');
 		$today = date("d-m-Y");
