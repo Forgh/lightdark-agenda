@@ -120,9 +120,9 @@ class Reunion{
 	public static function getListeParticipants($num){
 		/*Retourne la liste des Id des membres participant à la réunion, décommandés ou pas*/
 		global $bdd;
-		$membres = $bdd -> prepare('SELECT ID_PARTICIPANT FROM REUNION WHERE ID_REUNION = ?');
-		$membres = $bdd -> execute(array($num));
-		$tuple = $membres -> fetchAll();/*tableau*/
+		$membres = $bdd -> prepare('SELECT ID_PARTICIPANT FROM participe WHERE ID_REUNION = ?');
+		$membres->execute(array($num));
+		$tuple = $membres -> fetchAll(PDO::FETCH_COLUMN, 0);/*tableau*/
 		
 		return $tuple;
 	}
@@ -212,7 +212,8 @@ class Reunion{
 		$headers = "From: " . $expediteur . "\r\n" .
 					"Reply-To: " . $expediteur . "\r\n" .
 					"X-Mailer: PHP/" . phpversion();
-		mail($destinataire,$sujet,$msg,$headers);
+		//mail($destinataire,$sujet,$msg,$headers);
+		echo $msg, '<br>';
 	}
 
 
