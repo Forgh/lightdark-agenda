@@ -26,8 +26,8 @@
 	}*/
 	
 	// BdD JJ
-	/*
-	try
+	
+	/*try
 	{
 		$bdd = new PDO('mysql:host=localhost;dbname=agenda','root','');
 		$bdd-> exec('SET NAMES utf8'); //On indique le jeu de caractères
@@ -38,4 +38,3 @@
 	}*/
 	
 ?>
-XbNr64W3deZLCCeyPceopx6STSc=
