@@ -208,7 +208,10 @@ class Reunion{
 	}
 	
 	public static function envoyer_mail($destinataire, $sujet, $msg){
-		$headers = 'From: "Agenda interne" \r\n';
+		$expediteur = "postmaster@projets-lightdark.fr";
+		$headers = "From: " . $expediteur . "\r\n" .
+					"Reply-To: " . $expediteur . "\r\n" .
+					"X-Mailer: PHP/" . phpversion();
 		mail($destinataire,$sujet,$msg,$headers);
 	}
 
@@ -258,10 +261,22 @@ class Reunion{
 		$tab = Reunion::getAllReunionWithUser($id);
 		$res = '';
 		
+		// equivalent de SELECT ID_REUNION FROM participe WHERE ID_PARTICIPANT= '2' UNION SELECT ID_REUNION FROM reunion WHERE ID_CHEF_REUNION= '2';
+
+		
 		foreach ($tab as $valeur) {
 			$reunion = Reunion::getReunionByNum($valeur[0]);
 			$res .= '<p><a href="./afficher_reunion.php?id=' . $reunion->getNumReunion() . '">'. $reunion->getSujet(). '</a></p>';
 		}
+		
+		$tab = Reunion::getAllReunionCreatedByUser($id);
+		
+		foreach ($tab as $valeur) {
+			$reunion = Reunion::getReunionByNum($valeur[0]);
+			$res .= '<p><a href="./afficher_reunion.php?id=' . $reunion->getNumReunion() . '">'. $reunion->getSujet(). '</a></p>';
+		}
+		
+		
 		return $res;
 	}
 	
@@ -270,6 +285,17 @@ class Reunion{
 		global $bdd;
 		// SELECT ID_REUNION FROM participe WHERE ID_PARTICIPANT=(SELECT ID_PARTICIPANT FROM participant WHERE NOM='LeChat')
 		$u = $bdd -> prepare('SELECT ID_REUNION FROM participe WHERE ID_PARTICIPANT= ?;');
+		$u -> execute(array($num));
+		$tuple = $u -> fetchAll(PDO::FETCH_COLUMN, 0);/*tableau*/
+		
+		return $tuple; // ici on renvoie un array au controleur appellant
+	}
+	
+	public static function getAllReunionCreatedByUser($num){ 
+			
+		global $bdd;
+		// SELECT ID_REUNION FROM participe WHERE ID_PARTICIPANT=(SELECT ID_PARTICIPANT FROM participant WHERE NOM='LeChat')
+		$u = $bdd -> prepare('SELECT ID_REUNION FROM reunion WHERE ID_CHEF_REUNION= ?;');
 		$u -> execute(array($num));
 		$tuple = $u -> fetchAll(PDO::FETCH_COLUMN, 0);/*tableau*/
 		
