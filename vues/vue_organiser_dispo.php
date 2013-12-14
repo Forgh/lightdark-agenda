@@ -69,6 +69,7 @@
 						while($i < 7) {
 					?>
 							<div id="AM[<?php echo $i;?>]" class="empty">
+								<p class="moment">Matinée du <?php echo date('d/m/Y', $date); ?> </P>
 								<input type="hidden" value="<?php echo $date; ?>"> 
 							</div>
 					<?php		
@@ -86,6 +87,7 @@
 						while($i < 7) {
 					?>		
 							<div id="PM[<?php echo $i;?>]" class="empty">
+								<p class="moment">Après-midi du <?php echo date('d/m/Y', $date); ?></p>
 								<input type="hidden" value="<?php echo $date; ?>"> 
 							</div>
 					<?php

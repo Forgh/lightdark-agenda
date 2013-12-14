@@ -54,19 +54,22 @@ td, th{
 }
 /* tests javascript */
 
-.target { margin: 20px; width: 500px; float:left;  }
-.source{float:left;}
-.target { border: 1px solid blue; }
-.item { height:50px; margin:5px; border:1px solid gray;  float:left; }
+.target { margin: 20px; width: 95%; height: 120px; float:left;  }
 
-.empty { height: 52px; width:52px; margin: 5px; background: #eee; border: 1px dashed #999; float:left; }
+.source  img { height: 100px; width:12%;}
+
+.empty { height: 90%;width:12%; margin: 5px; background: #eee; border: 1px dashed #999; float:left; }
 .empty .item { margin: 0; }
 
+.target  img { height: 100%; width:100%;}
 
 .highlight { border: 1px solid red; background: #fff; }
 .highlight .item { opacity: 0.3; }
 
 
+.moment {
+	text-align:center;
+}
 
 #champ-texte{
 	width:60%;
