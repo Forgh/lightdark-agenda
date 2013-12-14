@@ -1,4 +1,3 @@
-<?php if(!isset($_SESSION['id'])) session_start(); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,8 +15,7 @@
             <h1>Les salles</h1>
 
 
-            <?php include("../controleurs/afficher_liste_salle.php");
-            ?>
+            <?php echo $res; ?>
          
             
         </div>
