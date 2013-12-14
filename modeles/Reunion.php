@@ -304,6 +304,21 @@ class Reunion{
 		return $tuple; // ici on renvoie un array au controleur appellant
 	}
 	
+	public static function getReunionFromToday($salle){
+		global $bdd;
+		$req=$bdd->prepare('SELECT REUNION.SUJET AS SUJET, MOMENT.JOUR AS JOUR, MOMENT.TEMPS AS TEMPS
+							FROM REUNION, MOMENT
+							WHERE REUNION.ID_DATE = MOMENT.ID_DATE
+							AND REUNION.SALLE = ?
+							AND MOMENT.JOUR >= CURRENT_DATE()
+							ORDER BY MOMENT.JOUR');
+		$req->execute(array($salle));
+		
+		$tuples = $req->fetchAll();
+		
+		return $tuples;
+	}
+	
 	public static function trouverReunion($id, $date, $plage){
 		global $bdd;
 		$newdate=date("Y-m-d",strtotime($date));
