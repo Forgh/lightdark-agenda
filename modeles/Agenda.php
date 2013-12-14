@@ -26,6 +26,31 @@ class Agenda{//un agenda affecté à une personne ou une salle
 	
 	/***********  Fin Getters **********/
 	
+	public static function AjouteMomentSiNecessaire($date, $temps){
+		//SELECT * FROM `moment` WHERE TEMPS='AM' AND JOUR='1970-01-03';
+		//INSERT INTO `moment`(`TEMPS`, `JOUR` ) VALUES ('AM','2000-01-01')
+		global $bdd;
+		$moment = $bdd->prepare('SELECT ID_DATE FROM moment WHERE JOUR= :DATE AND TEMPS= :TEMPS;');
+		$moment -> execute(array(
+							'DATE' => $date,
+							'TEMPS' => $temps
+							));
+							
+		$tuple = $moment -> fetchAll(PDO::FETCH_COLUMN, 0);
+
+		if (empty($tuple)){
+			$moment = $bdd->prepare('INSERT INTO `moment`(`TEMPS`, `JOUR` ) VALUES (:TEMPS,:DATE)');
+			$moment -> execute(array(
+								'DATE' => $date,
+								'TEMPS' => $temps
+								));
+			$tuple = $moment -> fetchAll(PDO::FETCH_COLUMN, 0);
+			return Agenda::AjouteSiNecessaire($date, $temps);
+		}else{
+			return $tuple[0];
+		}
+	}
+	
 	
 }//end class
 
