@@ -28,7 +28,7 @@ class Salle{
 		$tuple = $req -> fetchAll();
 		$tuple = $tuple[0];
 		
-		var_dump($tuple);
+
 		return new Salle($tuple['NUM_SALLE'], $tuple['NOM_SALLE']);
 		
 	}

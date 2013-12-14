@@ -15,7 +15,7 @@
             <h1>Les salles</h1>
 
 
-            <?php echo $res; ?>
+            <?php include('../controleurs/afficher_liste_salle.php'); echo $res; ?>
          
             
         </div>
