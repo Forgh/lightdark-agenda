@@ -1,7 +1,7 @@
 <div id="header">
 <div id="connexion">
 <div id="logo">
-<a  href="../index.php"><img src="../images/logo.png" alt="Logo Agenda"/></a>
+<a  href="../index.php"><img src="../images/logo_agenda.png" alt="Logo Agenda"/></a>
 </div>
 
 <!--[MODULE DE CONNEXION]-->

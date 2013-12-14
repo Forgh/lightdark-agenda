@@ -50,7 +50,13 @@
 					
 						<div class="item">
 							<input type="hidden" name="" value="false">
-							<img src="../css/design/blackbox.jpg" alt="indisponibilité" >  
+							<img src="../images/dispo.png" alt="indisponibilité" >  
+							
+							 
+						</div>
+						
+						<div>
+							<img src="../images/tuto.png" alt="" > 
 						</div>
 				
 				</div><br><br><br>
