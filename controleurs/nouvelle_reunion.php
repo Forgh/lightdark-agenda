@@ -6,7 +6,9 @@
 	require('../modeles/Utilisateur.php');
 	require('../modeles/Reunion.php');
 	require('../controleurs/liste_check_membre.php');//fournit $checklist
+	require('../controleurs/radio_salle.php'); //fournit $radio_salles
 	require('../modeles/Agenda.php');
+	
 
 
 
@@ -42,7 +44,7 @@ $formDate = '	<form enctype="multipart/form-data" method="post" action="../contr
 				<fieldset>
 				<legend>Selection de la date</legend>
 				<label for="date">Date :</label>
-				<input required="required" type="date" name="date" placeholder="JJ/MM/AAAA"> </br>
+				<input required="required" type="date" name="date" placeholder="JJ-MM-AAAA"> </br>
 				<input type="radio" name="plage" value="AM" checked="checked"> Matin </br>
 				<input type="radio" name="plage" value="PM"> Après-midi
 				<input type="hidden" name="etape" value="salle">
@@ -55,7 +57,7 @@ $formDate = '	<form enctype="multipart/form-data" method="post" action="../contr
 $formSalle = '	<form enctype="multipart/form-data" method="post" action="../controleurs/nouvelle_reunion.php">
 				<fieldset>
 				<legend>Selection de la salle</legend>
-				Insérer ici la liste des salles
+				'.$radio_salles.'
 				<input type="hidden" name="etape" value="membres">
 				<input type="hidden" name="date" value="'.$date.'">
 				<input type="hidden" name="plage" value="'.$plage.'">
@@ -103,10 +105,12 @@ switch ($etape){
 	case 'final':
 		/*instruction d'entrée dans la base*/
 		
-		list($day, $month, $year) = explode('/', $date);
+		$date=date("Y-m-d",strtotime($date));
+		
+		/*list($day, $month, $year) = explode('/', $date);
   		$timestamp = mktime(0, 0, 0, $month, $day, $year);
   		
-		$date = date("Y-m-d", $timestamp);//conversion pour SQL
+		$date = date("Y-m-d", $timestamp);//conversion pour SQL*/
 		
 		$idDate = Agenda::AjouteMomentSiNecessaire($date, $plage);
 		$salle = 'LaOne';//patch moche
