@@ -4,7 +4,7 @@ body {
 	padding-bottom:50px;
 	font-family: 'Source Sans Pro';
 	font-weight: 300;
-	background: #f7f7f7 url('../imgs/bg.png');
+	background: #f7f7f7 url('../css/design/bg.png');
 }
 
 
@@ -55,8 +55,8 @@ td, th{
 /* tests javascript */
 
 .target { margin: 20px; width: 95%; height: 120px; float:left;  }
-
-.source  img { height: 100px; width:100px;}
+.source {display:bloc-inline;width : 95%;}
+.source  img { height: 100px; width:100px; display:bloc-inline;}
 
 .empty { height:100px; width:100px; margin: 5px; background: #eee; border: 1px dashed #999; float:left; }
 .empty .item { margin: 0; }

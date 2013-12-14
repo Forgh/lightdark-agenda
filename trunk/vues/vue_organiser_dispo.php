@@ -55,11 +55,11 @@
 							 
 						</div>
 						
-						<div>
-							<img src="../images/tuto.png" alt="" > 
-						</div>
+						
+							<img src="../images/tuto.png" alt="déplacez" > 
+						
 				
-				</div><br><br><br>
+				</div>
 				
 			<form action="post_indispo.php" method="post" enctype="multipart/form-data">
 			<?php 
