@@ -21,6 +21,7 @@
 	</head>
 	
 	<body>
+		
 		<?php include("../include/header.php"); ?>
 		<div id="bodycentered" >
 			
