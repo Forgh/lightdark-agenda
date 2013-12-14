@@ -1,7 +1,7 @@
-<?php
-	if(!isset($_SESSION['id'])) session_start();
+<?phpsession_start();
+	if(isset($_SESSION['id'])) {
 	require('../modeles/Reunion.php');
-	$nom_salle=$_POST['salle'];
+	$salle=$_POST['salle'];
 	
 	$liste_reunions=Reunion::getReunionFromToday($salle);
 	$str='<ul>';
@@ -18,4 +18,5 @@
 	$str.='</ul>';
 	
 	include('../vues/vue_afficher_reunion_future_salle.php');
+	}
 ?>
