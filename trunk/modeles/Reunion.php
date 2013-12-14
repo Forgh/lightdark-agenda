@@ -221,7 +221,7 @@ class Reunion{
 		$p = Utilisateur::getUserById($id);
 		if ($p != null){
 			$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été créée.';	
-			envoyer_mail($p->getMail(), "AGENDA: ajout d'une réunion", $msg );
+			Reunion::envoyer_mail($p->getMail(), "AGENDA: ajout d'une réunion", $msg );
 		}
 	}
 
@@ -229,7 +229,7 @@ class Reunion{
 		$p = Utilisateur::getUserById($id);
 		if ($p != null){
 			$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été annulée.';	
-			envoyer_mail($p->getMail(), "AGENDA: suppression d'une réunion", $msg );
+			Reunion::envoyer_mail($p->getMail(), "AGENDA: suppression d'une réunion", $msg );
 		}
 	}
 	
@@ -241,7 +241,7 @@ class Reunion{
 		$user = Utilisateur::getUserById($idParticipant);/*et celui du décommandé*/
 		$msg = 'Bonjour '.$chef->getPrenom().', le participant '.$user->getPrenom().' '.$user->getNom().'s\'est décommandé de la réunion "'
 				.$reunion->getSujet().'", numéro '.$reunion->getNumReunion().'.';
-		envoyer_mail($chef->getMail(), 'AGENDA : un participant s\'est décommandé', $msg);
+		Reunion::envoyer_mail($chef->getMail(), 'AGENDA : un participant s\'est décommandé', $msg);
 		
 	}
 	
