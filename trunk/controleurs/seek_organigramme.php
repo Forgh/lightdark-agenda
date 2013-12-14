@@ -2,10 +2,7 @@
  if(isset($_SESSION['id'])) {
 		include('../modeles/Reunion.php');
 
-		$liste = Reunion::afficher_les_reunions($_SESSION['id']);
-		
-		include('../vues/afficher_liste_reunions.php');
-	
+
 		require('../modeles/Equipe.php');
 		require('../modeles/Service.php');
 		require('../modeles/Utilisateur.php');
