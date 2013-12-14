@@ -113,7 +113,7 @@ switch ($etape){
 		$date = date("Y-m-d", $timestamp);//conversion pour SQL*/
 		
 		$idDate = Agenda::AjouteMomentSiNecessaire($date, $plage);
-		$salle = 'LaOne';//patch moche
+
 		$idReunion = Reunion::ajouter_reunion($sujet, $salle, $_SESSION['id'], $idDate);
 		foreach ($membres as $value) {
 			Reunion::ajouterParticipant($idReunion,$value);
