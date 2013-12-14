@@ -33,7 +33,7 @@
 		<div id="bodycentered" >
 			<h1>Editer un compte-rendu</h1>
 
-			<form action="compte_rendu.php" method="post" enctype="multipart/form-data">
+			<form action="update_compte_rendu.php" method="post" enctype="multipart/form-data">
 				<textarea name="compte_rendu"><?php
 					echo $affichage_texte;
 

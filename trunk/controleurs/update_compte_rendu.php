@@ -4,10 +4,10 @@
 	if (isset($_POST['compte_rendu'])) 
 	{ 			
 		require('../modeles/Reunion.php');
-		$reunion = Reunion::getReunionById($_POST['reunion']);
+		$reunion = Reunion::getReunionByNum($_POST['reunion']);
 		$reunion->setCompteRendu($_POST['compte_rendu']);
-		$reunion->update();
+		Reunion::update($reunion);
 		
-		header('Location : http://projets-lightdark.fr/agenda/index.php');
+		header("Location: ../controleurs/afficher_reunion.php?id=".$_POST['reunion']);
 	}
 ?>	
