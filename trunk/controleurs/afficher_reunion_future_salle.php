@@ -1,4 +1,5 @@
 <?php
+	 if(!isset($_SESSION['id'])) session_start();
 	require('../modeles/Reunion.php');
 	$nom_salle=$_POST['salle'];
 	
@@ -7,10 +8,10 @@
 	foreach($liste_reunions as $value) {
 		$newdate=date("d-m-Y",strtotime($value['JOUR']));
 		if($value['TEMPS']=='AM'){
-			$str.='<li> Réunion "'.$value['SUJET'].'" le '.$newdate.' au matin </li>';
+			$str.='<li><a href="afficher_reunion.php?id='.$value['ID_REUNION'].'">Réunion "'.$value['SUJET'].'" </a>le '.$newdate.' au matin </li>';
 		}
 		else {
-			$str.='<li> Réunion "'.$value['SUJET'].'" le '.$newdate.' en après-midi </li>';
+			$str.='<li><a href="afficher_reunion.php?id='.$value['ID_REUNION'].'">Réunion "'.$value['SUJET'].'" </a>le '.$newdate.' en après-midi </li>';
 		}
 	}
 	
