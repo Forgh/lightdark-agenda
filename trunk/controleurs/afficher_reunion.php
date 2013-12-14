@@ -80,7 +80,7 @@
 	}
 		
 					
-	$ajouter=	'<form method="post" action="../compte_rendu.php">
+	$ajouter=	'<form method="post" action="afficher_compte_rendu.php">
 				<input type="hidden" name="reunion" value="'.$numReunion.'">
 				<input type="submit" value="Ajouter un rapport">
 				</form>';

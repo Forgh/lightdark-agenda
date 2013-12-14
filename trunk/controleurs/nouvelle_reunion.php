@@ -117,6 +117,7 @@ switch ($etape){
 		$idReunion = Reunion::ajouter_reunion($sujet, $salle, $_SESSION['id'], $idDate);
 		foreach ($membres as $value) {
 			Reunion::ajouterParticipant($idReunion,$value);
+			Reunion::mail_nouvelle_reunion($sujet, $value);
 			}
 		header('Location: ../controleurs/liste_reunion.php');
 		
