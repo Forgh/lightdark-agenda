@@ -92,9 +92,9 @@
 		$addRapport = $ajouter;
 		
 		/*si chef -> $delete = $supprimer*/
-			$supprimer = '<form method="post" action="afficher_reunion.php">
+			$supprimer = '<form method="post" action="../controleurs/supprimer_reunion.php">
 					<input type="hidden" name="action" value="supprimer">
-					<input type="hidden" name="id" value="'.$numReunion.'">
+					<input type="hidden" name="num" value="'.$numReunion.'">
 					<input type="submit" value="Supprimer">
 					</form>';
 		

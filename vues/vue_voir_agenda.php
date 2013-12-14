@@ -51,7 +51,8 @@
 					<?php
 						foreach($apresmidi as $value){
 							?>
-								<td><?php if(!empty($value)){?>
+								<td><?php if(!empty($value)){
+											$chef=Utilisateur::getUserById($value->getChefReunion());?>
 									<p>
 										<?php echo $value->getSujet(); ?>
 									</p>
@@ -59,7 +60,7 @@
 										Salle : <?php echo $value->getSalle(); ?>
 									</p>
 									<p>
-										Chef de réunion : <?php echo $value->getChefReunion(); ?>
+										Chef de réunion : <?php echo $chef->getNom().' '.$chef->getPrenom(); ?>
 									</p>
 										<?php
 										}

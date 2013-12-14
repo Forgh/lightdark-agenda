@@ -16,10 +16,10 @@
 		}
 		
 		Reunion::supprimerReunion($reunion->getNumReunion()); // cette fonction n'existe pas dans modeles/Reunion.php (elle est vide)
-
+		header('Location: ../controleurs/liste_reunion.php');
 	}else{
 		//erreur reunion inexistante
-
+		header('Location: ../vues/denied.php');
 	}
 
 ?>
