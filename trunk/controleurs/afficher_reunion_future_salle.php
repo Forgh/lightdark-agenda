@@ -1,5 +1,5 @@
 <?php
-	 if(!isset($_SESSION['id'])) session_start();
+	if(!isset($_SESSION['id'])) session_start();
 	require('../modeles/Reunion.php');
 	$nom_salle=$_POST['salle'];
 	
