@@ -5,7 +5,6 @@ require_once('../include/connect.php');
 class Salle{
 	private $numeroSalle;
 	private $nomSalle;
-	private $agendaSalle;//planning des disponibilites de la salle
 	
 	//public abstract function estDispo(/*heure et jour/date*/);
 
@@ -19,10 +18,25 @@ class Salle{
 	return $this->nomSalle;
 	}
 	
-	public function getAgendaSalle() { 
-	return $this->agendaSalle;
-	}
+
 	/***********  Fin Getters **********/
+	
+	public static function getSalleById($id){
+		global $bdd;
+		$req = $bdd->prepare('SELECT * FROM salle WHERE NUM_SALLE = ?;');
+		$req -> execute(array($id));
+		$tuple = $req -> fetchAll();
+		$tuple = $tuple[0];
+		
+		var_dump($tuple);
+		return new Salle($tuple['NUM_SALLE'], $tuple['NOM_SALLE']);
+		
+	}
+	
+	public function __construct ($num, $nom){
+		 $this->numeroSalle = $num;
+		 $this->nomSalle = $nom;
+	}
 	
 	public static function getListeSalleDispo($jour,$temps){
 		global $bdd;
