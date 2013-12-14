@@ -61,7 +61,7 @@ td, th{
 .empty { height:100px; width:12%; margin: 5px; background: #eee; border: 1px dashed #999; float:left; }
 .empty .item { margin: 0; }
 
-.target  img { height: 100px; width:12%;}
+.target  img { height: 100px; width:100%;}
 
 .highlight { border: 1px solid red; background: #fff; }
 .highlight .item { opacity: 0.3; }
