@@ -1,5 +1,5 @@
-<?phpsession_start();
-	if(isset($_SESSION['id'])) {
+<?php
+	if(!isset($_SESSION['id']))session_start();
 	require('../modeles/Reunion.php');
 	$salle=$_POST['salle'];
 	
@@ -18,5 +18,5 @@
 	$str.='</ul>';
 	
 	include('../vues/vue_afficher_reunion_future_salle.php');
-	}
+	
 ?>
