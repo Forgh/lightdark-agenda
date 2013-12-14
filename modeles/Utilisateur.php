@@ -110,14 +110,15 @@ class Utilisateur{
 	}
 	
 	public static function getUserById($id){
-		
-		global $bdd;
-		$u = $bdd -> prepare('SELECT * FROM PARTICIPANT WHERE ID_PARTICIPANT = ?');
-		$u -> execute(array($id));
-		$tuple = $u -> fetchAll();
+        
+        global $bdd;
+        $u = $bdd -> prepare('SELECT * FROM PARTICIPANT WHERE ID_PARTICIPANT = ?');
+        $u -> execute(array($id));
+        $tuple = $u -> fetch();
 
-		return new Utilisateur($tuple['ID_PARTICIPANT'], $tuple['NOM'], $tuple['PRENOM'], $tuple['MAIL'], NULL, NULL);
-	}
+
+        return new Utilisateur($tuple['ID_PARTICIPANT'], $tuple['NOM'], $tuple['PRENOM'], $tuple['MAIL'], NULL, NULL);
+    }
 	
 	public static function getParticipation($id, $num){/*retourne le statut de participation du membre $id à la réunion $num*/
 		global $bdd;

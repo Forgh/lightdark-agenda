@@ -3,7 +3,7 @@
 	include('../modeles/Reunion.php');
 	include('../modeles/Utilisateur.php');
 	
-	$num = $_GET["num"]; //ici le chef a entre les infos permettant d'avoir accès à la réunion
+	$num = $_POST["num"]; //ici le chef a entre les infos permettant d'avoir accès à la réunion
 
 	$reunion = Reunion::getReunionByNum($num);	
 	if ($reunion != null){
@@ -11,10 +11,11 @@
 		foreach($participants as $p){
 
 			$u = Utilisateur::getUserById($p);
-			Reunion::mail_annulation_reunion($u->getNumReunion() ,$u->getEmail());
+
+			Reunion::mail_annulation_reunion($num, $u->getId());
 		}
 		
-		//$reunion::supprimer($reunion); // cette fonction n'existe pas dans modeles/Reunion.php (elle est vide)
+		Reunion::supprimerReunion($reunion->getNumReunion()); // cette fonction n'existe pas dans modeles/Reunion.php (elle est vide)
 
 	}else{
 		//erreur reunion inexistante

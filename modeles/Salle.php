@@ -40,6 +40,15 @@ class Salle{
 		return $salles;
 	}
 	
+	public static function getListeSalle(){
+		global $bdd;
+		$req = $bdd->prepare('SELECT NUM_SALLE FROM salle;'
+								);
+		$req -> execute(array(null));
+		$salles = $req->fetchAll();
+		return $salles;
+	}
+	
 }//end class
 
 ?>
