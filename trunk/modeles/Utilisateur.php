@@ -114,7 +114,8 @@ class Utilisateur{
 		global $bdd;
 		$u = $bdd -> prepare('SELECT * FROM PARTICIPANT WHERE ID_PARTICIPANT = ?');
 		$u -> execute(array($id));
-		$tuple = $u -> fetchAll()[0];
+		$tuple = $u -> fetchAll();
+		$tuple = $tuple[0];
 		return new Utilisateur($tuple['ID_PARTICIPANT'], $tuple['NOM'], $tuple['PRENOM'], $tuple['MAIL'], NULL, NULL);
 	}
 	

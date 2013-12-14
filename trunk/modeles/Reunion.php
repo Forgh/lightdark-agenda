@@ -184,7 +184,8 @@ class Reunion{
 	global $bdd;
 	$chef = $bdd -> prepare('SELECT ID_CHEF_REUNION FROM REUNION WHERE ID_REUNION = ?');
 	$chef -> execute(array($numReunion));
-	$tuple = $chef -> fetchAll()[0];
+	$tuple = $chef -> fetchAll();
+	$tuple = $tuple[0];
 	
 	return ($idParticipant == $tuple['ID_CHEF_REUNION']);
 		}
@@ -276,15 +277,22 @@ class Reunion{
 	}
 	
 	public static function trouverReunion($id, $date, $plage){
-
-		$r = $bdd -> prepare('SELECT * FROM REUNION, PARTICIPE, MOMENT WHERE MOMENT.JOUR = :date AND MOMENT.TEMPS=:plage AND PARTICIPE.ID_PARTICIPANT=: participant AND MOMENT.ID_DATE = REUNION.ID_DATE AND REUNION.ID_REUNION = PARTICIPE.ID_REUNION' );
+		global $bdd;
+		$newdate=date("Y-m-d",strtotime($date));
+		$r = $bdd -> prepare('SELECT * FROM REUNION, PARTICIPE, MOMENT WHERE MOMENT.JOUR = :date AND MOMENT.TEMPS=:plage AND PARTICIPE.ID_PARTICIPANT= :participant AND MOMENT.ID_DATE = REUNION.ID_DATE AND REUNION.ID_REUNION = PARTICIPE.ID_REUNION' );
         $r -> execute(array(
-							'date' => $date,
+							'date' => $newdate,
 							'plage' => $plage,
 							'participant' => $id
 						));
-		$tuple = $r -> fetchAll(PDO::FETCH_COLUMN, 0);
-		return new Reunion($tuple['ID_REUNION'], $tuple['ID_CHEF_REUNION'], $tuple['SUJET'], NULL, $plage, NULL,$tuple['SALLE'], $tuple['compte_rendu']);
+		if($r->rowCount()>0){
+			$tuple = $r -> fetchAll();
+			$tuple = $tuple[0];/*retourne un tableau (une case) du tableau de valeurs -_-'*/
+			return new Reunion($tuple['ID_REUNION'], $tuple['ID_CHEF_REUNION'], $tuple['SUJET'], NULL, NULL, $plage,$tuple['SALLE'], NULL, $tuple['compte_rendu']);
+		}
+		else {
+			return null;
+		}
 	}
 
 }//end class
