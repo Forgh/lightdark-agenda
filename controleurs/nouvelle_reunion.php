@@ -72,6 +72,7 @@ $formMembres = '<form enctype="multipart/form-data" method="post" action="../con
 				<input type="hidden" name="etape" value="final">
 				<input type="hidden" name="date" value="'.$date.'">
 				<input type="hidden" name="plage" value="'.$plage.'">
+				<input type="hidden" name="salle" value="'.$salle.'">
 				</fieldset>
 				<fieldset>
 				<legend>Sujet</legend>
@@ -107,20 +108,15 @@ switch ($etape){
 		
 		$date=date("Y-m-d",strtotime($date));
 		
-		/*list($day, $month, $year) = explode('/', $date);
-  		$timestamp = mktime(0, 0, 0, $month, $day, $year);
-  		
-		$date = date("Y-m-d", $timestamp);//conversion pour SQL*/
 		
 		$idDate = Agenda::AjouteMomentSiNecessaire($date, $plage);
-
+		
 		$idReunion = Reunion::ajouter_reunion($sujet, $salle, $_SESSION['id'], $idDate);
 		foreach ($membres as $value) {
 			Reunion::ajouterParticipant($idReunion,$value);
 			Reunion::mail_nouvelle_reunion($sujet, $value);
 			}
 		header('Location: ../controleurs/liste_reunion.php');
-		
 		break;
 	
 }
