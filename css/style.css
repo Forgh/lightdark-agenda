@@ -56,12 +56,12 @@ td, th{
 
 .target { margin: 20px; width: 95%; height: 120px; float:left;  }
 .source {display:bloc-inline;width : 95%;}
-.source  img { height: 100px; width:100px; display:bloc-inline;}
+.source  img { height: 100px; width:12%; display:bloc-inline;}
 
-.empty { height:100px; width:100px; margin: 5px; background: #eee; border: 1px dashed #999; float:left; }
+.empty { height:100px; width:12%; margin: 5px; background: #eee; border: 1px dashed #999; float:left; }
 .empty .item { margin: 0; }
 
-.target  img { height: 100px; width:100px;}
+.target  img { height: 100px; width:12%;}
 
 .highlight { border: 1px solid red; background: #fff; }
 .highlight .item { opacity: 0.3; }
