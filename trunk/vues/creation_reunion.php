@@ -21,14 +21,15 @@
 	</head>
 	
 	<body>
-		
 		<?php include("../include/header.php"); ?>
 		<div id="bodycentered" >
 			
 		<h2>Création de réunion</h2>
     	        
-        <?php if(isset($contenu)) echo($contenu);
-		var_dump($_POST);
+        <?php 	if(isset($contenu)) 
+					echo($contenu);
+				var_dump($_POST);
+		
 				?>
 
 			
