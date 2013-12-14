@@ -38,6 +38,27 @@ class Plage{//une plage horaire
 			if (empty($tuple)){return false;}
 			else return true;
 	}
+	
+	public static function isAvailable($idperso, $idDate) {
+	global $bdd;
+	
+	$req = $bdd->prepare('	SELECT PARTICIPANT.ID_PARTICIPANT
+							FROM PARTICIPANT
+							WHERE ID_PARTICIPANT = ? 
+							AND PARTICIPANT.ID_PARTICIPANT NOT IN(
+											SELECT PARTICIPANT.ID_PARTICIPANT
+											FROM PARTICIPANT, MOMENT, REUNION, PARTICIPE, EST_INDISPONIBLE
+											WHERE PARTICIPANT.ID_PARTICIPANT=EST_INDISPONIBLE.ID_PARTICIPANT
+											AND MOMENT.ID_DATE= ?
+											AND MOMENT.ID_DATE=EST_INDISPONIBLE.ID_DATE
+											AND MOMENT.ID_DATE=REUNION.ID_DATE
+											AND (REUNION.ID_CHEF_REUNION = ? OR (PARTICIPE.ID_PARTICIPANT=? AND PARTICIPE.ID_REUNION=REUNION.ID_REUNION AND REUNION.ID_DATE =?)))');
+	$req->execute(array($idperso,$idDate,$idperso,$idperso,$idDate));
+	$tuple = $req-> fetchAll();
+			
+			if (empty($tuple)){return false;}
+			else return true;
+	}
 
 }//end class
 
