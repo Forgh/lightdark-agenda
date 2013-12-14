@@ -221,7 +221,7 @@ class Reunion{
 		$p = Utilisateur::getUserById($id);
 		if ($p != null){
 			$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été créée.';	
-			Reunion::envoyer_mail($p->getMail(), "AGENDA: ajout d'une réunion", $msg );
+			envoyer_mail($p->getMail(), "AGENDA: ajout d'une réunion", $msg );
 		}
 	}
 
@@ -229,7 +229,7 @@ class Reunion{
 		$p = Utilisateur::getUserById($id);
 		if ($p != null){
 			$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été annulée.';	
-			Reunion::envoyer_mail($p->getMail(), "AGENDA: suppression d'une réunion", $msg );
+			envoyer_mail($p->getMail(), "AGENDA: suppression d'une réunion", $msg );
 		}
 	}
 	
@@ -241,7 +241,7 @@ class Reunion{
 		$user = Utilisateur::getUserById($idParticipant);/*et celui du décommandé*/
 		$msg = 'Bonjour '.$chef->getPrenom().', le participant '.$user->getPrenom().' '.$user->getNom().'s\'est décommandé de la réunion "'
 				.$reunion->getSujet().'", numéro '.$reunion->getNumReunion().'.';
-		Reunion::envoyer_mail($chef->getMail(), 'AGENDA : un participant s\'est décommandé', $msg);
+		envoyer_mail($chef->getMail(), 'AGENDA : un participant s\'est décommandé', $msg);
 		
 	}
 	
@@ -306,7 +306,7 @@ class Reunion{
 	
 	public static function getReunionFromToday($salle){
 		global $bdd;
-		$req=$bdd->prepare('SELECT REUNION.SUJET AS SUJET, MOMENT.JOUR AS JOUR, MOMENT.TEMPS AS TEMPS
+		$req=$bdd->prepare('SELECT REUNION.SUJET AS SUJET, MOMENT.JOUR AS JOUR, MOMENT.TEMPS AS TEMPS, REUNION.ID_REUNION AS ID_REUNION
 							FROM REUNION, MOMENT
 							WHERE REUNION.ID_DATE = MOMENT.ID_DATE
 							AND REUNION.SALLE = ?
