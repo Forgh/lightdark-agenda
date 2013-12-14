@@ -100,20 +100,22 @@ class Reunion{
 		$tuple = $req -> fetchAll();
 		$tuple = $tuple[0];/*retourne un tableau (une case) du tableau de valeurs -_-'*/
 		
-		return new Reunion($tuple['ID_REUNION'], $tuple['ID_CHEF_REUNION'], $tuple['SUJET'], NULL, NULL, NULL,$tuple['SALLE'], NULL, $tuple['compte_rendu']);
+		return new Reunion($tuple['ID_REUNION'], $tuple['ID_CHEF_REUNION'], $tuple['SUJET'], NULL, NULL, $tuple['ID_DATE'], NULL, $tuple['SALLE'], $tuple['compte_rendu']);
 	}
 	
+	
 	public static function update($new) {
+		
 		 
 		global $bdd;
 		$nouveau_membre = $bdd -> prepare('UPDATE REUNION SET ID_CHEF_REUNION = :ID_CHEF_REUNION, ID_DATE=:ID_DATE, SUJET=:SUJET, SALLE=:SALLE, compte_rendu=:compte_rendu WHERE ID_REUNION= :id_reunion');
 		$nouveau_membre -> execute(array(
-							'ID_CHEF_REUNION' => $new->chefReunion,
-							'ID_DATE' => $new->plage,
-							'SUJET' => $new->sujet,
-							'SALLE' => $new->salle,
-							'compte_rendu' => $new->compteRendu,
-							'id_reunion' => $new->numReunion
+							'ID_CHEF_REUNION' => $new->getChefReunion(),
+							'ID_DATE' => $new->getPlage(),
+							'SUJET' => $new->getSujet(),
+							'SALLE' => $new->getSalle(),
+							'compte_rendu' => $new->getCompteRendu(),
+							'id_reunion' => $new->getNumReunion()
 		));
 	}
 	
@@ -221,7 +223,7 @@ class Reunion{
 		$p = Utilisateur::getUserById($id);
 		if ($p != null){
 			$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été créée.';	
-			envoyer_mail($p->getMail(), "AGENDA: ajout d'une réunion", $msg );
+			Reunion::envoyer_mail($p->getMail(), "AGENDA: ajout d'une réunion", $msg );
 		}
 	}
 
@@ -229,7 +231,7 @@ class Reunion{
 		$p = Utilisateur::getUserById($id);
 		if ($p != null){
 			$msg = 'Bonjour, ' . $p->getPrenom() .', la réunion '. $num .' a été annulée.';	
-			envoyer_mail($p->getMail(), "AGENDA: suppression d'une réunion", $msg );
+			Reunion::envoyer_mail($p->getMail(), "AGENDA: suppression d'une réunion", $msg );
 		}
 	}
 	
@@ -241,7 +243,7 @@ class Reunion{
 		$user = Utilisateur::getUserById($idParticipant);/*et celui du décommandé*/
 		$msg = 'Bonjour '.$chef->getPrenom().', le participant '.$user->getPrenom().' '.$user->getNom().'s\'est décommandé de la réunion "'
 				.$reunion->getSujet().'", numéro '.$reunion->getNumReunion().'.';
-		envoyer_mail($chef->getMail(), 'AGENDA : un participant s\'est décommandé', $msg);
+		Reunion::envoyer_mail($chef->getMail(), 'AGENDA : un participant s\'est décommandé', $msg);
 		
 	}
 	
