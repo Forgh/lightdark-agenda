@@ -271,6 +271,7 @@ class Reunion{
 		
 		$tab = Reunion::getAllReunionCreatedByUser($id);
 		
+		$res .= '<h1>Réunion dont vous êtes chef : </h1>';
 		foreach ($tab as $valeur) {
 			$reunion = Reunion::getReunionByNum($valeur[0]);
 			$res .= '<p><a href="./afficher_reunion.php?id=' . $reunion->getNumReunion() . '">'. $reunion->getSujet(). '</a></p>';
