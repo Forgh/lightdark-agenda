@@ -97,7 +97,8 @@ class Reunion{
 		$req = $bdd -> prepare('SELECT * FROM REUNION WHERE ID_REUNION = ?;');
 		$req -> execute(array($num));
 		
-		$tuple = $req -> fetchAll()[0];/*retourne un tableau (une case) du tableau de valeurs -_-'*/
+		$tuple = $req -> fetchAll();
+		$tuple = $tuple[0];/*retourne un tableau (une case) du tableau de valeurs -_-'*/
 		
 		return new Reunion($tuple['ID_REUNION'], $tuple['ID_CHEF_REUNION'], $tuple['SUJET'], NULL, NULL, NULL,$tuple['SALLE'], NULL, $tuple['compte_rendu']);
 	}
