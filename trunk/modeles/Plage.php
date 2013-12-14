@@ -52,7 +52,7 @@ class Plage{//une plage horaire
 											AND MOMENT.ID_DATE= ?
 											AND MOMENT.ID_DATE=EST_INDISPONIBLE.ID_DATE
 											AND MOMENT.ID_DATE=REUNION.ID_DATE
-											AND (REUNION.ID_CHEF_REUNION = ? OR (PARTICIPE.ID_PARTICIPANT=? AND PARTICIPE.ID_REUNION=REUNION.ID_REUNION AND REUNION.ID_DATE =?)))');
+											AND (REUNION.ID_CHEF_REUNION = ? OR (PARTICIPE.ID_PARTICIPANT=? AND PARTICIPE.ID_REUNION=REUNION.ID_REUNION AND REUNION.ID_DATE =? AND PARTICIPE.ETAT="Participera")))');
 	$req->execute(array($idperso,$idDate,$idperso,$idperso,$idDate));
 	$tuple = $req-> fetchAll();
 			
