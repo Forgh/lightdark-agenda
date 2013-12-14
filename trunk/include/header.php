@@ -26,6 +26,7 @@
 <!--Les whitespace permettent de coller les boutons les uns à la suite des autres-->
 <div class="boutonbegin"><a href="../vues/accueil.php">Accueil</a></div><!-- whitespace
 --><div class="bouton"><a href="../controleurs/choisir_date.php">Mes disponibilités</a></div><!-- whitespace
+--><div class="bouton"><a href="../controleurs/voir_agenda.php">Mon agenda</a></div><!-- whitespace
 --><div class="bouton"><a href="../controleurs/liste_reunion.php">Mes réunions</a></div><!-- whitespace
 --><div class="bouton"><a href="../controleurs/afficher_liste_salle.php">Salles</a></div><!-- whitespace
 --><div class="boutonend"><a href="../vues/organigramme.php">Voir l'organigramme</a></div><!-- whitespace
