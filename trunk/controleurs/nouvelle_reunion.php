@@ -82,7 +82,7 @@ switch ($etape){
 		
 	case 'final':
 		/*instruction d'entrée dans la base*/
-		include('../controleurs/liste_reunion.php');
+		header('Location: ../controleurs/liste_reunion.php');
 		//foreach $_POST['membres']
 		break;
 	

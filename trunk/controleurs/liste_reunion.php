@@ -1,15 +1,11 @@
 
-<?php  session_start(); 
+<?php 
+if(!isset($_SESSION['id'])) session_start();
  
- if(isset($_SESSION['id'])) {
-		include('../modeles/Reunion.php');
+include('../modeles/Reunion.php');
 
-		$liste = Reunion::afficher_les_reunions($_SESSION['id']);
-		
-		include('../vues/afficher_liste_reunions.php');
-	}else{
-		include('../vues/denied.php');
-	}
-
+	$liste = Reunion::afficher_les_reunions($_SESSION['id']);
+	
+	include('../vues/afficher_liste_reunions.php');
 ?>
 
