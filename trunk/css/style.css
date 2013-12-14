@@ -73,6 +73,10 @@ td, th{
 
 /* Fin CSS pour organiser_dispo (javascript) */
 
+#liste_salle{
+	list-style:none;
+}
+
 #agenda {
 	width:95%;
 	margin : 10px auto auto auto; 
