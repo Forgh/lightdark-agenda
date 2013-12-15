@@ -28,7 +28,6 @@
     	        
         <?php 	if(isset($contenu)) 
 					echo($contenu);
-				var_dump($_POST);
 		
 				?>
 
