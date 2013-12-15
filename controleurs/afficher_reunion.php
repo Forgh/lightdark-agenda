@@ -47,7 +47,7 @@
 	if(!isset($rapport) || empty($rapport))
 		$rapport = '<em>Aucun compte-rendu n\'a été déposé</em>';
 		
-	$statut = Utilisateur::getParticipation($_GET['id'], $numReunion);
+	$statut = Utilisateur::getParticipation($_SESSION['id'], $numReunion);
 	
 	
 	if(!$reunion->estPassee()){
