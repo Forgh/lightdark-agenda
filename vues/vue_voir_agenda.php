@@ -15,15 +15,15 @@
 		<h2>Votre agenda des 7 prochains jours</h2>
 			<table id="agenda">
 				<tr id="jours">
-					<td></td>
+					<td class="font"></td>
 					<?php 
 						foreach($jours as $value){
-								echo '<td>'.$value.'</td>';
+								echo '<td class="font">'.$value.'</td>';
 						}
 					?>
 				</tr>
 				<tr id="matinees">
-				<td><p>Matin</p></td>
+				<td class="font"><p>Matin</p></td>
 				<?php
 					foreach($matin as $value){
 						?>
@@ -47,7 +47,7 @@
 				?>
 				</tr>
 				<tr id="apresmidi">
-				<td><p>Après-midi</p></td>
+				<td class="font"><p>Après-midi</p></td>
 					<?php
 						foreach($apresmidi as $value){
 							?>
