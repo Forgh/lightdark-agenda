@@ -31,7 +31,7 @@
 	<body>
 		<?php include("../include/header.php"); ?>
 		<div id="bodycentered" >
-			<h1>Editer un compte-rendu</h1>
+			<h2>Editer un compte-rendu</h2>
 
 			<form action="update_compte_rendu.php" method="post" enctype="multipart/form-data">
 				<textarea name="compte_rendu"><?php

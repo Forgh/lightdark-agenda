@@ -16,10 +16,21 @@ body {
 	  height:110px;
 	  z-index:1;/*pour passer le header au premier plan lors du scroll*/
   
-	  background: #82BADF;
+ background: #75d7ef; /* Old browsers */
+background: -moz-linear-gradient(top, #75d7ef 0%, #009fc7 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#75d7ef), color-stop(100%,#009fc7)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #75d7ef 0%,#009fc7 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #75d7ef 0%,#009fc7 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #75d7ef 0%,#009fc7 100%); /* IE10+ */
+background: linear-gradient(to bottom, #75d7ef 0%,#009fc7 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#75d7ef', endColorstr='#009fc7',GradientType=0 ); /* IE6-9 */
 }
 
-
+ul
+{
+list-style-position:inside;
+	list-style-type:square;
+} 
 
 @font-face {
 	font-family : 'tallsfilms';
@@ -78,12 +89,15 @@ td, th{
 }
 
 #agenda {
-	width:95%;
+	max-width:95%;
+		overflow:scroll;
+
 	margin : 10px auto auto auto; 
 }
  
 #agenda td {
 	padding : 5px;
+	overflow:scroll;
 }
 
 #agenda, #agenda th, #agenda td{
@@ -443,21 +457,24 @@ div.bouton.header_out:active{
 
 #barre_navigation{
 	font-family: caption;
-	position: fixed;
-	left:33%;
-	top:110px;/*en bas du header*/
+	margin-left: auto;
+  margin-right: auto;
+  width: 750px; 
+  margin-top:110px;
 	z-index:1;
 	vertical-align:middle;
 }
 
 
 div.bouton, div.boutonbegin, div.boutonend {
-	-moz-box-shadow:inset 0px 1px 0px 0px #dcecfb;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #dcecfb;
-	box-shadow:inset 0px 1px 0px 0px #dcecfb;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bddbfa), color-stop(1, #80b5ea) );
-	background:-moz-linear-gradient( center top, #bddbfa 5%, #80b5ea 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
+background: rgb(228,245,252); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(228,245,252,1) 0%, rgba(191,232,249,1) 50%, rgba(159,216,239,1) 51%, rgba(42,176,237,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(228,245,252,1)), color-stop(50%,rgba(191,232,249,1)), color-stop(51%,rgba(159,216,239,1)), color-stop(100%,rgba(42,176,237,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(228,245,252,1) 0%,rgba(191,232,249,1) 50%,rgba(159,216,239,1) 51%,rgba(42,176,237,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(228,245,252,1) 0%,rgba(191,232,249,1) 50%,rgba(159,216,239,1) 51%,rgba(42,176,237,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(228,245,252,1) 0%,rgba(191,232,249,1) 50%,rgba(159,216,239,1) 51%,rgba(42,176,237,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(228,245,252,1) 0%,rgba(191,232,249,1) 50%,rgba(159,216,239,1) 51%,rgba(42,176,237,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f5fc', endColorstr='#2ab0ed',GradientType=0 ); /* IE6-9 */
 	background-color:#bddbfa;
 	
 	text-indent:0;

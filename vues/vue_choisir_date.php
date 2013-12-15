@@ -13,7 +13,7 @@
 		
 		<div id="bodycentered">
 			
-            <h1>Veuillez choisir un jour de départ</h1>
+            <h2>Veuillez choisir un jour de départ</h2>
             
 			<form action="organiser_dispo.php" method="post" enctype="multipart/form-data">
 				<input type="date" name="date">

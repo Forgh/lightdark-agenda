@@ -13,7 +13,7 @@
 		
 		<div id="bodycentered">
 			
-            <h1>Opération réussie</h1>
+            <h2>Opération réussie</h2>
         
 <p>Vos indisponibilités ont bien été enregistrées</p>
 

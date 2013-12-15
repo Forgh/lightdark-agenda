@@ -16,8 +16,8 @@
 			
             <h2>Accueil</h2>
         
-<p>Ac ne quis a nobis hoc ita dici forte miretur, quod alia quaedam in hoc facultas sit ingeni, neque haec dicendi ratio aut disciplina, ne nos quidem huic uni studio penitus umquam dediti fuimus. Etenim omnes artes, quae ad humanitatem pertinent, habent quoddam commune vinculum, et quasi cognatione quadam inter se continentur.
-</p>
+<p> Bienvenue sur votre agenda <?php echo $_SESSION['prenom']; ?> ! </p>
+<p> Veuillez utiliser le menu ci-dessus pour accéder à votre panel de gestion de réunions, au planning des salles, votre propre planning et autres...</p>
 
 			
 		</div>
