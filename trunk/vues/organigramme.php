@@ -24,7 +24,7 @@
 		
 		<div id="bodycentered">
 			
-            <h1>Organigramme</h1>
+            <h2>Organigramme</h2>
             
 			<?php include('../controleurs/seek_organigramme.php'); ?>
 			

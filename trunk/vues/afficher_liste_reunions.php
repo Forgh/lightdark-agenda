@@ -13,7 +13,7 @@
 	<body>
 		<?php include("../include/header.php"); ?>
 		<div id="bodycentered" >
-			<h1>Mes réunions</h1>
+			<h2>Mes réunions</h2>
 
 			<?php //on a déjà l'id de l'utilisateur
 				if(isset($liste)) echo $liste;

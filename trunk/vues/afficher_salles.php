@@ -12,7 +12,7 @@
     <body>
         <?php include("../include/header.php"); ?>
         <div id="bodycentered" >
-            <h1>Les salles</h1>
+            <h2>Les salles</h2>
 
 
             <?php echo $res; ?>
