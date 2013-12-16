@@ -15,9 +15,10 @@
 		<div id="bodycentered">
 			
             <h2>Accueil</h2>
-        
-<p> Bienvenue sur votre agenda <?php echo $_SESSION['prenom']; ?> ! </p>
-<p> Veuillez utiliser le menu ci-dessus pour accéder à votre panel de gestion de réunions, au planning des salles, votre propre planning et autres...</p>
+<?php 
+	if(isset($_SESSION['prenom'])) echo('<p> Bienvenue sur votre agenda, '.$_SESSION['prenom'].' ! </p>');
+	else echo('<p> Veuillez utiliser le menu ci-dessus pour accéder à votre panel de gestion de réunions, au planning des salles, votre propre planning et autres...</p>');
+?>
 
 			
 		</div>
