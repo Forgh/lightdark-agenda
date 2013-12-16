@@ -37,6 +37,10 @@ list-style-position:inside;
 	src: url('design/tall.ttf');
 }
 
+strong{
+	font-weight:bold;	
+}
+
 h2{
 	font-family:'tallsfilms';
 	font-size:1.9em;
