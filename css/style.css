@@ -94,8 +94,6 @@ td, th{
 
 #agenda {
 	max-width:95%;
-		overflow:scroll;
-
 	margin : 10px auto auto auto; 
 }
  
