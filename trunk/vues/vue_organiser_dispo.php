@@ -64,8 +64,9 @@
 			<form action="post_indispo.php" method="post" enctype="multipart/form-data">
 			<?php 
 			
-			$date = strtotime($_POST['date']);//  ici ta date
-			
+			if(!empty($_POST['date']))
+				$date = strtotime($_POST['date']);//  ici ta date
+			else $date = strtotime(date('d-m-Y'));//aujourd'hui
 				?>
 
 				<div class="target">
@@ -87,7 +88,9 @@
 				
 				<div class="target">
 					<?php
-						$date = strtotime($_POST['date']);//  ici ta date
+						if(!empty($_POST['date']))
+							$date = strtotime($_POST['date']);//  ici ta date
+						else $date = strtotime(date('d-m-Y'));//aujourd'hui
 
 						$i=0;
 						while($i < 7) {
