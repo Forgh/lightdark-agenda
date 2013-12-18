@@ -60,8 +60,8 @@
 								<td><?php if(!empty($value)){
 											$chef=Utilisateur::getUserById($value->getChefReunion());?>
 									<p>
-										<?php echo $value->getSujet(); ?>
-									</p>
+											<a href="afficher_reunion.php?id=<?php echo $value->getNumReunion(); ?>" ><?php echo $value->getSujet(); ?></a>
+										</p>
 									<p>
 										Salle : <?php echo $value->getSalle(); ?>
 									</p>
