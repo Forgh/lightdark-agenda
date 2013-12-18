@@ -21,6 +21,6 @@
 		include('../vues/vue_voir_agenda.php');
 	}
 	else{
-		echo 'Veuillez vous connecter';
+		header('Location: ../vues/denied.php');
 	}
 ?>	
