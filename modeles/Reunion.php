@@ -52,7 +52,21 @@ class Reunion{
 	
 	public function estPassee(){//[TODO] : implémenter avec une vraie vérification
 	/*Renvoie faux si la réunion à lieu ce jour ou plus tard, vrai sinon*/
-		return false;	
+	global $bdd;
+		$today = date("d-m-Y");
+		$idReunion= $this->getPlage();
+		$dateReunion = $bdd->prepare('SELECT JOUR FROM MOMENT WHERE ID_DATE = ?');
+		$dateReunion -> execute(array($idReunion));
+		$dateReunion = $dateReunion->fetch();
+		$dateReunion = $dateReunion[0];
+		$today = strtotime($today);
+		$dateReunion = strtotime($dateReunion);
+		if($today >= $dateReunion){
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	/***********  Fin Getters  ***********/
 	
