@@ -47,7 +47,24 @@ class Agenda{//un agenda affecté à une personne ou une salle
 		}
 	}
 	
+	public static function estIndisponible ($date, $moment, $idPerso){
+		$timestamp=strtotime($date);
+		$date = date("Y-m-d",$timestamp);
+		
+		global $bdd;
+		$req = $bdd->prepare('SELECT ID_DATE FROM  MOMENT WHERE JOUR = ? AND TEMPS = ?');
+		$req->execute(array($date,$moment));
 	
+		while($idDate= $req->fetch()){
+			$indispo = $bdd->prepare('SELECT * FROM EST_INDISPONIBLE WHERE ID_DATE = ? AND ID_PARTICIPANT = ?');
+			$indispo->execute(array($idDate['ID_DATE'], $idPerso));
+			
+			if(!empty($indispo)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }//end class
 
 ?>
