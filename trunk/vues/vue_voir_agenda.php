@@ -24,7 +24,7 @@
 				</tr>
 				<tr id="matinees">
 				<td class="font"><p>Matin</p></td>
-				<?php
+				<?php $i=0;
 					foreach($matin as $value){
 						?>
 							<td><?php if(!empty($value)){
@@ -40,6 +40,10 @@
 										</p>
 										<?php
 										}
+										else if(Agenda::estIndisponible($jours[$i],'AM',$_SESSION['id'])){
+											echo '<img src="../images/indispo.png" alt="Indisponible">';
+										}
+										$i++;
 										?>
 							</td>
 						<?php
@@ -49,6 +53,8 @@
 				<tr id="apresmidi">
 				<td class="font"><p>Après-midi</p></td>
 					<?php
+												$j=0;
+
 						foreach($apresmidi as $value){
 							?>
 								<td><?php if(!empty($value)){
@@ -64,6 +70,11 @@
 									</p>
 										<?php
 										}
+										else if(Agenda::estIndisponible($jours[$j],'PM',$_SESSION['id'])){
+											echo '<img src="../images/indispo.png" alt="Indisponible">';
+										}
+										
+										$j++;
 										?>
 								</td>
 							<?php

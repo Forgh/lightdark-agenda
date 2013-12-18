@@ -3,6 +3,7 @@
 		
 		include('../modeles/Reunion.php');
 		include('../modeles/Utilisateur.php');
+		include('../modeles/Agenda.php');
 		$today = date("d-m-Y");
 
 		for ($i=0;$i<7;$i++) {
