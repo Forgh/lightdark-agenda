@@ -45,6 +45,7 @@ $formDate = '	<form enctype="multipart/form-data" method="post" action="../contr
 				<legend>Selection de la date</legend>
 				<label for="date">Date :</label>
 				<input required="required" type="date" name="date" placeholder="JJ-MM-AAAA"> </br>
+				
 				<input type="radio" name="plage" value="AM" checked="checked"> Matin </br>
 				<input type="radio" name="plage" value="PM"> Après-midi
 				<input type="hidden" name="etape" value="salle">
@@ -93,9 +94,19 @@ switch ($etape){
 		include('../vues/creation_reunion.php');
 		break;
 	
-	case 'salle':
+	case 'salle':/*Avant d'afficher la page "choisir sa salle"*/
+		if(true)
+		$today = date('d-m-Y');
+		$timestampDate = strtotime($date);//timestamp de la date entrée
+		
+		if($timestampDate < strtotime($today)){//si date déjà passée
+			$contenu = $formDate.'<div class="erreur">Veuillez entrer une date valide</div>';
+			include('../vues/creation_reunion.php');
+		}
+		else{
 		$contenu = $formSalle;
 		include('../vues/creation_reunion.php');
+		}
 		break;
 		
 	case 'membres':
